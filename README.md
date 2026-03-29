@@ -85,7 +85,7 @@ If you use TalkingHeadBench in your research, please use the following BibTeX pl
 @software{TalkingHeadBench2024,
   author = {elix3r},
   title = {TalkingHeadBench: A Diagnostic Reasoning Benchmark for Talking-Head LoRA Pipelines},
-  year = {2024},
+  year = {2026},
   url = {https://github.com/22elix3r/TalkingHeadBench},
   version = {1.0.0}
 }
