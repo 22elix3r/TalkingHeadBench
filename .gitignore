@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# ML Model Weights
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+
+# Media Files (Global)
+*.mp4
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+
+# Media Exceptions (Allow in assets/ and docs/)
+!assets/**
+!docs/**
+
+# Secrets and Credentials
+.env
+*key*
+*token*
+*secret*
+
+# Large Data and Logs
+data/
+datasets/
+logs/
+temp/
+_temp/
+
+# IDE and System
+.vscode/
+.idea/
+.DS_Store
+.agent/
