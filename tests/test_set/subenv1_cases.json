@@ -1,0 +1,1132 @@
+{
+  "cases": [
+    {
+      "id": "001",
+      "source_file": "ref_001.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.26671083495020864,
+        "estimated_yaw_degrees": 0.20169640267008665,
+        "estimated_pitch_degrees": 7.253506203955002,
+        "background_complexity_score": 0.4984572520736105,
+        "lighting_uniformity_score": 0.24749941681606225,
+        "skin_tone_bucket": 3,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.14986528113503222,
+        "prompt_token_count": 603,
+        "prompt_semantic_density": 0.7899159663865546,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.2017,
+          "computed_occupancy": 0.2667,
+          "computed_sharpness": 0.1499,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3598
+        }
+      }
+    },
+    {
+      "id": "002",
+      "source_file": "ref_002.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.19196479115635157,
+        "estimated_yaw_degrees": 1.1837981771982193,
+        "estimated_pitch_degrees": 8.53957457949557,
+        "background_complexity_score": 0.6743001595962432,
+        "lighting_uniformity_score": 0.3183147220868896,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.11192579470374425,
+        "prompt_token_count": 525,
+        "prompt_semantic_density": 0.8252427184466019,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "low_quality",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "crop reference image to show face occupying at least 40% of frame area before use",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 1.1838,
+          "computed_occupancy": 0.192,
+          "computed_sharpness": 0.1119,
+          "suggested_regime": "low_quality",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3088
+        }
+      }
+    },
+    {
+      "id": "003",
+      "source_file": "ref_003.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.2725474081256173,
+        "estimated_yaw_degrees": 1.1255909122958667,
+        "estimated_pitch_degrees": 7.363127049464499,
+        "background_complexity_score": 0.832447068146124,
+        "lighting_uniformity_score": 0.06953988592873628,
+        "skin_tone_bucket": 3,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.08162747156777021,
+        "prompt_token_count": 503,
+        "prompt_semantic_density": 0.7578947368421053,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "complex_background",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding",
+          "background complexity high — non-face regions compete for attention budget"
+        ],
+        "valid_prompt_modifications": [
+          "re-shoot reference against a plain backdrop to prevent background tokens competing with face identity encoding",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 1.1256,
+          "computed_occupancy": 0.2725,
+          "computed_sharpness": 0.0816,
+          "suggested_regime": "complex_background",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.2455
+        }
+      }
+    },
+    {
+      "id": "004",
+      "source_file": "ref_004.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.25728518502278763,
+        "estimated_yaw_degrees": -0.7495898046909464,
+        "estimated_pitch_degrees": 8.439161133948497,
+        "background_complexity_score": 0.2291957932242163,
+        "lighting_uniformity_score": 0.2874764787508761,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.024452668892707457,
+        "prompt_token_count": 552,
+        "prompt_semantic_density": 0.7747747747747747,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -0.7496,
+          "computed_occupancy": 0.2573,
+          "computed_sharpness": 0.0245,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3937
+        }
+      }
+    },
+    {
+      "id": "005",
+      "source_file": "ref_005.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.22957304026931524,
+        "estimated_yaw_degrees": 0.2945575223997702,
+        "estimated_pitch_degrees": 7.296129818846514,
+        "background_complexity_score": 0.2749065557301927,
+        "lighting_uniformity_score": 0.2642211569809112,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.03503245213697283,
+        "prompt_token_count": 575,
+        "prompt_semantic_density": 0.8256880733944955,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "low_quality",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "crop reference image to show face occupying at least 40% of frame area before use",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.2946,
+          "computed_occupancy": 0.2296,
+          "computed_sharpness": 0.035,
+          "suggested_regime": "low_quality",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3737
+        }
+      }
+    },
+    {
+      "id": "006",
+      "source_file": "ref_006.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.2955096691169522,
+        "estimated_yaw_degrees": 33.9946297521904,
+        "estimated_pitch_degrees": 5.352060047295191,
+        "background_complexity_score": 0.1681451286090439,
+        "lighting_uniformity_score": 0.33264004114925594,
+        "skin_tone_bucket": 5,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.027245719034493597,
+        "prompt_token_count": 615,
+        "prompt_semantic_density": 0.819672131147541,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "non_frontal",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 33.9946,
+          "computed_occupancy": 0.2955,
+          "computed_sharpness": 0.0272,
+          "suggested_regime": "non_frontal",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.427
+        }
+      }
+    },
+    {
+      "id": "007",
+      "source_file": "ref_007.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.2709252152253281,
+        "estimated_yaw_degrees": 48.24818657014514,
+        "estimated_pitch_degrees": 6.081733989017453,
+        "background_complexity_score": 0.2410308726696404,
+        "lighting_uniformity_score": 0.3156295268313972,
+        "skin_tone_bucket": 5,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.035017695319897346,
+        "prompt_token_count": 533,
+        "prompt_semantic_density": 0.8269230769230769,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "non_frontal",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 48.2482,
+          "computed_occupancy": 0.2709,
+          "computed_sharpness": 0.035,
+          "suggested_regime": "non_frontal",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4032
+        }
+      }
+    },
+    {
+      "id": "008",
+      "source_file": "ref_008.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.3259303405880928,
+        "estimated_yaw_degrees": -71.20058423909946,
+        "estimated_pitch_degrees": 8.042769203847751,
+        "background_complexity_score": 0.40832051825647453,
+        "lighting_uniformity_score": 0.30459834592985213,
+        "skin_tone_bucket": 5,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.05397594432379059,
+        "prompt_token_count": 623,
+        "prompt_semantic_density": 0.8048780487804879,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "non_frontal",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding",
+          "extreme lateral pose — profile view severely reduces usable reference tokens"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -71.2006,
+          "computed_occupancy": 0.3259,
+          "computed_sharpness": 0.054,
+          "suggested_regime": "non_frontal",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3878
+        }
+      }
+    },
+    {
+      "id": "009",
+      "source_file": "ref_009.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.24534901604056358,
+        "estimated_yaw_degrees": -49.31794132251808,
+        "estimated_pitch_degrees": 8.126108627073185,
+        "background_complexity_score": 0.3477225107594732,
+        "lighting_uniformity_score": 0.2035173880281158,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.06152954527981137,
+        "prompt_token_count": 539,
+        "prompt_semantic_density": 0.822429906542056,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "low_quality",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "crop reference image to show face occupying at least 40% of frame area before use",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -49.3179,
+          "computed_occupancy": 0.2453,
+          "computed_sharpness": 0.0615,
+          "suggested_regime": "low_quality",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3571
+        }
+      }
+    },
+    {
+      "id": "010",
+      "source_file": "ref_010.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.246126065030694,
+        "estimated_yaw_degrees": 0.7772138847854013,
+        "estimated_pitch_degrees": 1.4932629069629482,
+        "background_complexity_score": 1.0,
+        "lighting_uniformity_score": 0.34652263542053063,
+        "skin_tone_bucket": 3,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.11093244484514717,
+        "prompt_token_count": 492,
+        "prompt_semantic_density": 0.7916666666666666,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "low_quality",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "crop reference image to show face occupying at least 40% of frame area before use",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.7772,
+          "computed_occupancy": 0.2461,
+          "computed_sharpness": 0.1109,
+          "suggested_regime": "low_quality",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.2653
+        }
+      }
+    },
+    {
+      "id": "011",
+      "source_file": "ref_011.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.27394223301248116,
+        "estimated_yaw_degrees": 0.21367615394448689,
+        "estimated_pitch_degrees": 9.404006680656586,
+        "background_complexity_score": 0.1432163076682715,
+        "lighting_uniformity_score": 0.3166478441512127,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.027717897432831644,
+        "prompt_token_count": 530,
+        "prompt_semantic_density": 0.7757009345794392,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.2137,
+          "computed_occupancy": 0.2739,
+          "computed_sharpness": 0.0277,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4224
+        }
+      }
+    },
+    {
+      "id": "012",
+      "source_file": "ref_012.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.9752188069479806,
+        "estimated_yaw_degrees": 1.674451900261819,
+        "estimated_pitch_degrees": 6.958791072623426,
+        "background_complexity_score": 0.0,
+        "lighting_uniformity_score": 0.14257801088947297,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.06960971678870148,
+        "prompt_token_count": 492,
+        "prompt_semantic_density": 0.8181818181818182,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 1.6745,
+          "computed_occupancy": 0.9752,
+          "computed_sharpness": 0.0696,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.635
+        }
+      }
+    },
+    {
+      "id": "013",
+      "source_file": "ref_013.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.35466248867186634,
+        "estimated_yaw_degrees": -26.30671239208516,
+        "estimated_pitch_degrees": 11.114116703846703,
+        "background_complexity_score": 0.0983039892281269,
+        "lighting_uniformity_score": 0.3305038067695233,
+        "skin_tone_bucket": 5,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.012672271111359932,
+        "prompt_token_count": 508,
+        "prompt_semantic_density": 0.8584905660377359,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "non_frontal",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -26.3067,
+          "computed_occupancy": 0.3547,
+          "computed_sharpness": 0.0127,
+          "suggested_regime": "non_frontal",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4554
+        }
+      }
+    },
+    {
+      "id": "014",
+      "source_file": "ref_014.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.2697721481323242,
+        "estimated_yaw_degrees": -0.3540482436055811,
+        "estimated_pitch_degrees": 9.357075790533312,
+        "background_complexity_score": 0.11475734441122168,
+        "lighting_uniformity_score": 0.2200751983330147,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.029296646734595873,
+        "prompt_token_count": 568,
+        "prompt_semantic_density": 0.8141592920353983,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -0.354,
+          "computed_occupancy": 0.2698,
+          "computed_sharpness": 0.0293,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4079
+        }
+      }
+    },
+    {
+      "id": "015",
+      "source_file": "ref_015.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.30095508681102234,
+        "estimated_yaw_degrees": 0.0787174722887595,
+        "estimated_pitch_degrees": 6.783640210215074,
+        "background_complexity_score": 0.14719240547615264,
+        "lighting_uniformity_score": 0.20841154811291385,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.03332163711071112,
+        "prompt_token_count": 611,
+        "prompt_semantic_density": 0.7751937984496124,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.0787,
+          "computed_occupancy": 0.301,
+          "computed_sharpness": 0.0333,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4092
+        }
+      }
+    },
+    {
+      "id": "016",
+      "source_file": "ref_016.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.31093581007285553,
+        "estimated_yaw_degrees": -1.0653470539799819,
+        "estimated_pitch_degrees": 9.178804381827895,
+        "background_complexity_score": 0.09495288573553234,
+        "lighting_uniformity_score": 0.2792656267313851,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.014105671392825325,
+        "prompt_token_count": 537,
+        "prompt_semantic_density": 0.7962962962962963,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -1.0653,
+          "computed_occupancy": 0.3109,
+          "computed_sharpness": 0.0141,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.433
+        }
+      }
+    },
+    {
+      "id": "017",
+      "source_file": "ref_017.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.9529492173876082,
+        "estimated_yaw_degrees": 0.37582876566065415,
+        "estimated_pitch_degrees": 3.96832173035298,
+        "background_complexity_score": 0.024831383373851972,
+        "lighting_uniformity_score": 0.24935375608227717,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1374,
+          768
+        ],
+        "estimated_sharpness": 0.048195612447065564,
+        "prompt_token_count": 540,
+        "prompt_semantic_density": 0.7413793103448276,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [],
+        "valid_prompt_modifications": [
+          "add explicit identity descriptor such as 'portrait of OHWXPERSON' to strengthen prompt-to-reference binding"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.3758,
+          "computed_occupancy": 0.9529,
+          "computed_sharpness": 0.0482,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.6404
+        }
+      }
+    },
+    {
+      "id": "018",
+      "source_file": "ref_018.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.9529492173876082,
+        "estimated_yaw_degrees": 0.37582876566065415,
+        "estimated_pitch_degrees": 3.96832173035298,
+        "background_complexity_score": 0.024831383373851972,
+        "lighting_uniformity_score": 0.24935375608227717,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1374,
+          768
+        ],
+        "estimated_sharpness": 0.048195612447065564,
+        "prompt_token_count": 559,
+        "prompt_semantic_density": 0.7631578947368421,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [],
+        "valid_prompt_modifications": [
+          "add explicit identity descriptor such as 'portrait of OHWXPERSON' to strengthen prompt-to-reference binding"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.3758,
+          "computed_occupancy": 0.9529,
+          "computed_sharpness": 0.0482,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.6404
+        }
+      }
+    },
+    {
+      "id": "019",
+      "source_file": "ref_019.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.9529492173876082,
+        "estimated_yaw_degrees": 0.37582876566065415,
+        "estimated_pitch_degrees": 3.96832173035298,
+        "background_complexity_score": 0.024831383373851972,
+        "lighting_uniformity_score": 0.24935375608227717,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1374,
+          768
+        ],
+        "estimated_sharpness": 0.048195612447065564,
+        "prompt_token_count": 628,
+        "prompt_semantic_density": 0.7906976744186046,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [],
+        "valid_prompt_modifications": [
+          "add explicit identity descriptor such as 'portrait of OHWXPERSON' to strengthen prompt-to-reference binding"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.3758,
+          "computed_occupancy": 0.9529,
+          "computed_sharpness": 0.0482,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.6404
+        }
+      }
+    },
+    {
+      "id": "020",
+      "source_file": "ref_020.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.9529492173876082,
+        "estimated_yaw_degrees": 0.37582876566065415,
+        "estimated_pitch_degrees": 3.96832173035298,
+        "background_complexity_score": 0.024831383373851972,
+        "lighting_uniformity_score": 0.24935375608227717,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1374,
+          768
+        ],
+        "estimated_sharpness": 0.048195612447065564,
+        "prompt_token_count": 577,
+        "prompt_semantic_density": 0.7394957983193278,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [],
+        "valid_prompt_modifications": [
+          "add explicit identity descriptor such as 'portrait of OHWXPERSON' to strengthen prompt-to-reference binding"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": 0.3758,
+          "computed_occupancy": 0.9529,
+          "computed_sharpness": 0.0482,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.6404
+        }
+      }
+    },
+    {
+      "id": "021",
+      "source_file": "ref_021.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.304949886622754,
+        "estimated_yaw_degrees": -0.15055316337723074,
+        "estimated_pitch_degrees": 2.542070855174985,
+        "background_complexity_score": 1.0,
+        "lighting_uniformity_score": 0.11235041200594509,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.15576428583752805,
+        "prompt_token_count": 609,
+        "prompt_semantic_density": 0.8032786885245902,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "complex_background",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding",
+          "background complexity high — non-face regions compete for attention budget"
+        ],
+        "valid_prompt_modifications": [
+          "re-shoot reference against a plain backdrop to prevent background tokens competing with face identity encoding",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -0.1506,
+          "computed_occupancy": 0.3049,
+          "computed_sharpness": 0.1558,
+          "suggested_regime": "complex_background",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.2451
+        }
+      }
+    },
+    {
+      "id": "022",
+      "source_file": "ref_022.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.22946405224502087,
+        "estimated_yaw_degrees": -34.15498902609289,
+        "estimated_pitch_degrees": 7.65763616375718,
+        "background_complexity_score": 0.11433578689099194,
+        "lighting_uniformity_score": 0.23727483235973457,
+        "skin_tone_bucket": 4,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1375,
+          768
+        ],
+        "estimated_sharpness": 0.026941647266423074,
+        "prompt_token_count": 631,
+        "prompt_semantic_density": 0.8114754098360656,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "low_quality",
+        "acceptable_regimes": [],
+        "identified_risk_factors": [
+          "yaw exceeds 25° — lateral pose reduces reference token coverage",
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "use a frontal-facing reference image to maximise reference token coverage across all generation frames",
+          "crop reference image to show face occupying at least 40% of frame area before use",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -34.155,
+          "computed_occupancy": 0.2295,
+          "computed_sharpness": 0.0269,
+          "suggested_regime": "low_quality",
+          "suggested_risk_factors": [
+            "yaw exceeds 25° — lateral pose reduces reference token coverage",
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.3988
+        }
+      }
+    },
+    {
+      "id": "023",
+      "source_file": "ref_023.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.28388736112551255,
+        "estimated_yaw_degrees": -0.7162607505192292,
+        "estimated_pitch_degrees": 6.532766043811455,
+        "background_complexity_score": 1.0,
+        "lighting_uniformity_score": 0.18511442845223403,
+        "skin_tone_bucket": 3,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.21969819608933425,
+        "prompt_token_count": 580,
+        "prompt_semantic_density": 0.8260869565217391,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "complex_background",
+        "acceptable_regimes": [
+          "frontal_simple"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding",
+          "background complexity high — non-face regions compete for attention budget"
+        ],
+        "valid_prompt_modifications": [
+          "re-shoot reference against a plain backdrop to prevent background tokens competing with face identity encoding",
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -0.7163,
+          "computed_occupancy": 0.2839,
+          "computed_sharpness": 0.2197,
+          "suggested_regime": "complex_background",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.2661
+        }
+      }
+    },
+    {
+      "id": "024",
+      "source_file": "ref_024.PNG",
+      "observation": {
+        "face_occupancy_ratio": 0.27887891151688315,
+        "estimated_yaw_degrees": -16.23611516297194,
+        "estimated_pitch_degrees": 5.286140894024532,
+        "background_complexity_score": 0.09903928152648972,
+        "lighting_uniformity_score": 0.3084112080049588,
+        "skin_tone_bucket": 5,
+        "occlusion_detected": false,
+        "image_resolution": [
+          1376,
+          768
+        ],
+        "estimated_sharpness": 0.01690383733356814,
+        "prompt_token_count": 466,
+        "prompt_semantic_density": 0.7525773195876289,
+        "conflicting_descriptors": [],
+        "identity_anchoring_strength": 0.5
+      },
+      "ground_truth": {
+        "regime_classification": "frontal_simple",
+        "acceptable_regimes": [
+          "non_frontal"
+        ],
+        "identified_risk_factors": [
+          "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+          "face occupancy below 0.4 — background competes for attention budget",
+          "low sharpness — may cause blurred identity encoding"
+        ],
+        "valid_prompt_modifications": [
+          "ensure even lighting on face — avoid strong directional light that creates shadow regions"
+        ],
+        "_annotation_notes": {
+          "computed_yaw": -16.2361,
+          "computed_occupancy": 0.2789,
+          "computed_sharpness": 0.0169,
+          "suggested_regime": "frontal_simple",
+          "suggested_risk_factors": [
+            "lighting uniformity low — shadow regions risk inconsistent skin rendering",
+            "face occupancy below 0.4 — background competes for attention budget",
+            "low sharpness — may cause blurred identity encoding"
+          ],
+          "image_usability_score": 0.4289
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2044 @@
+{
+  "dataset_summary": {
+    "total_clips": 42,
+    "phoneme_coverage": {},
+    "suggested_accept": 31,
+    "suggested_reject": 0,
+    "suggested_fix": 0,
+    "suggested_defer": 11
+  },
+  "cases": [
+    {
+      "id": "001",
+      "source_file": "clip_001.mp4",
+      "observation": {
+        "clip_id": "clip_001",
+        "face_embedding_variance": 0.00007078618364175782,
+        "landmark_stability_score": 0.3379331221403899,
+        "identity_cosine_drift": 0.00007444620132446289,
+        "frame_difference_mean": 1.4496011073942539,
+        "optical_flow_magnitude": 1.718680118432315,
+        "blink_count": 48,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.35734834551683425,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 0,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00007078618364175782,
+          "identity_cosine_drift": 0.00007444620132446289,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "002",
+      "source_file": "clip_002.mp4",
+      "observation": {
+        "clip_id": "clip_002",
+        "face_embedding_variance": 0.000032549221941735595,
+        "landmark_stability_score": 0.42179584406456855,
+        "identity_cosine_drift": 0.000822603702545166,
+        "frame_difference_mean": 2.7677785114410822,
+        "optical_flow_magnitude": 2.6047471765459593,
+        "blink_count": 29,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.3970906387484058,
+        "occlusion_frames": 5,
+        "clips_audited_so_far": 1,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000032549221941735595,
+          "identity_cosine_drift": 0.000822603702545166,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "003",
+      "source_file": "clip_003.mp4",
+      "observation": {
+        "clip_id": "clip_003",
+        "face_embedding_variance": 0.00008570517093176022,
+        "landmark_stability_score": 0.5506895149851139,
+        "identity_cosine_drift": 0.00004172325134277344,
+        "frame_difference_mean": 1.925212771245619,
+        "optical_flow_magnitude": 3.15879009059928,
+        "blink_count": 3,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9859447551296682,
+        "exposure_score": 0.46047917170079633,
+        "occlusion_frames": 1,
+        "clips_audited_so_far": 2,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00008570517093176022,
+          "identity_cosine_drift": 0.00004172325134277344,
+          "blur_score": 0.9859447551296682,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "004",
+      "source_file": "clip_004.mp4",
+      "observation": {
+        "clip_id": "clip_004",
+        "face_embedding_variance": 0.0001406738447258249,
+        "landmark_stability_score": 0.4046926539794989,
+        "identity_cosine_drift": 0.0007509589195251465,
+        "frame_difference_mean": 0.7352971704389555,
+        "optical_flow_magnitude": 4.139831908718244,
+        "blink_count": 22,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.4925809835364869,
+        "exposure_score": 0.25362612887982583,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 3,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0001406738447258249,
+          "identity_cosine_drift": 0.0007509589195251465,
+          "blur_score": 0.4925809835364869,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "005",
+      "source_file": "clip_005.mp4",
+      "observation": {
+        "clip_id": "clip_005",
+        "face_embedding_variance": 0.000040677474316908047,
+        "landmark_stability_score": 0.5211025938143333,
+        "identity_cosine_drift": 0.00007259845733642578,
+        "frame_difference_mean": 0.6814913360091547,
+        "optical_flow_magnitude": 7.285904509244887,
+        "blink_count": 23,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.7809480612138774,
+        "exposure_score": 0.34901093213429535,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 4,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000040677474316908047,
+          "identity_cosine_drift": 0.00007259845733642578,
+          "blur_score": 0.7809480612138774,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "006",
+      "source_file": "clip_006.mp4",
+      "observation": {
+        "clip_id": "clip_006",
+        "face_embedding_variance": 0.00009661493095336482,
+        "landmark_stability_score": 0.5521883801654377,
+        "identity_cosine_drift": 0.000941932201385498,
+        "frame_difference_mean": 2.07048104986944,
+        "optical_flow_magnitude": 1.9538288175062772,
+        "blink_count": 10,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.35975390191263945,
+        "exposure_score": 0.26489994529741934,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 5,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00009661493095336482,
+          "identity_cosine_drift": 0.000941932201385498,
+          "blur_score": 0.35975390191263945,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "007",
+      "source_file": "clip_007.mp4",
+      "observation": {
+        "clip_id": "clip_007",
+        "face_embedding_variance": 0.00008005712152225897,
+        "landmark_stability_score": 0.8796906633810564,
+        "identity_cosine_drift": 0.0013765692710876465,
+        "frame_difference_mean": 2.0225671323076373,
+        "optical_flow_magnitude": 1.3759019173014932,
+        "blink_count": 1,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.8179767395020985,
+        "exposure_score": 0.2568675134223859,
+        "occlusion_frames": 17,
+        "clips_audited_so_far": 6,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00008005712152225897,
+          "identity_cosine_drift": 0.0013765692710876465,
+          "blur_score": 0.8179767395020985,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "008",
+      "source_file": "clip_008.mp4",
+      "observation": {
+        "clip_id": "clip_008",
+        "face_embedding_variance": 0.000027841910196002573,
+        "landmark_stability_score": 0.8070640550960193,
+        "identity_cosine_drift": 0.00019043684005737305,
+        "frame_difference_mean": 1.450880899160139,
+        "optical_flow_magnitude": 2.5639350882820175,
+        "blink_count": 0,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.5502211418313593,
+        "exposure_score": 0.2884983162873909,
+        "occlusion_frames": 89,
+        "clips_audited_so_far": 7,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000027841910196002573,
+          "identity_cosine_drift": 0.00019043684005737305,
+          "blur_score": 0.5502211418313593,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "009",
+      "source_file": "clip_009.mp4",
+      "observation": {
+        "clip_id": "clip_009",
+        "face_embedding_variance": 0.0008195088594220579,
+        "landmark_stability_score": 0.9082926150966931,
+        "identity_cosine_drift": 0.00009107589721679688,
+        "frame_difference_mean": 3.8999806143735585,
+        "optical_flow_magnitude": 1.2060730119976228,
+        "blink_count": 11,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.7926572484161826,
+        "exposure_score": 0.2779714475978358,
+        "occlusion_frames": 9,
+        "clips_audited_so_far": 8,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0008195088594220579,
+          "identity_cosine_drift": 0.00009107589721679688,
+          "blur_score": 0.7926572484161826,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "010",
+      "source_file": "clip_010.mp4",
+      "observation": {
+        "clip_id": "clip_010",
+        "face_embedding_variance": 0.0001366662181681022,
+        "landmark_stability_score": 0.43454612156357425,
+        "identity_cosine_drift": 0.0007149577140808105,
+        "frame_difference_mean": 2.228782756762071,
+        "optical_flow_magnitude": 2.992529986390571,
+        "blink_count": 27,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9947830323308237,
+        "exposure_score": 0.4822929903715075,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 9,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0001366662181681022,
+          "identity_cosine_drift": 0.0007149577140808105,
+          "blur_score": 0.9947830323308237,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "011",
+      "source_file": "clip_011.mp4",
+      "observation": {
+        "clip_id": "clip_011",
+        "face_embedding_variance": 0.00004681493737734854,
+        "landmark_stability_score": 0.4077342724245648,
+        "identity_cosine_drift": 0.0004423856735229492,
+        "frame_difference_mean": 0.6634624133449655,
+        "optical_flow_magnitude": 5.5578961337477235,
+        "blink_count": 27,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.3723044544125834,
+        "exposure_score": 0.2764223173866564,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 10,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00004681493737734854,
+          "identity_cosine_drift": 0.0004423856735229492,
+          "blur_score": 0.3723044544125834,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "012",
+      "source_file": "clip_012.mp4",
+      "observation": {
+        "clip_id": "clip_012",
+        "face_embedding_variance": 0.0003057325375266373,
+        "landmark_stability_score": 0.832429102753148,
+        "identity_cosine_drift": 0.00045996904373168945,
+        "frame_difference_mean": 1.8954359469991742,
+        "optical_flow_magnitude": 1.7135598735785893,
+        "blink_count": 9,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.12446859069123901,
+        "exposure_score": 0.26665209742279405,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 11,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0003057325375266373,
+          "identity_cosine_drift": 0.00045996904373168945,
+          "blur_score": 0.12446859069123901,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "013",
+      "source_file": "clip_013.mp4",
+      "observation": {
+        "clip_id": "clip_013",
+        "face_embedding_variance": 0.000276888080406934,
+        "landmark_stability_score": 0.837798004731309,
+        "identity_cosine_drift": 0.0004153251647949219,
+        "frame_difference_mean": 2.0497710694424547,
+        "optical_flow_magnitude": 2.6642061492765006,
+        "blink_count": 3,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.20816613177010893,
+        "exposure_score": 0.2568140860168583,
+        "occlusion_frames": 2,
+        "clips_audited_so_far": 12,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000276888080406934,
+          "identity_cosine_drift": 0.0004153251647949219,
+          "blur_score": 0.20816613177010893,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "014",
+      "source_file": "clip_014.mp4",
+      "observation": {
+        "clip_id": "clip_014",
+        "face_embedding_variance": 0.0000614945383858867,
+        "landmark_stability_score": 0.46733522001551003,
+        "identity_cosine_drift": 0.0002384185791015625,
+        "frame_difference_mean": 0.6028838583283661,
+        "optical_flow_magnitude": 4.459626535916174,
+        "blink_count": 11,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.4662809822020662,
+        "exposure_score": 0.2845099348366574,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 13,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0000614945383858867,
+          "identity_cosine_drift": 0.0002384185791015625,
+          "blur_score": 0.4662809822020662,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "015",
+      "source_file": "clip_015.mp4",
+      "observation": {
+        "clip_id": "clip_015",
+        "face_embedding_variance": 0.0003212137962691486,
+        "landmark_stability_score": 0.5414692029680525,
+        "identity_cosine_drift": 0.0013110041618347168,
+        "frame_difference_mean": 1.4862556057316916,
+        "optical_flow_magnitude": 2.17202509931441,
+        "blink_count": 6,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.4005243124123135,
+        "exposure_score": 0.3014762964759814,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 14,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0003212137962691486,
+          "identity_cosine_drift": 0.0013110041618347168,
+          "blur_score": 0.4005243124123135,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "016",
+      "source_file": "clip_016.mp4",
+      "observation": {
+        "clip_id": "clip_016",
+        "face_embedding_variance": 0.00015618665202055126,
+        "landmark_stability_score": 0.44094281494027315,
+        "identity_cosine_drift": 0.0003643035888671875,
+        "frame_difference_mean": 0.7116484538384593,
+        "optical_flow_magnitude": 6.534004539629976,
+        "blink_count": 64,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.27600641850301877,
+        "exposure_score": 0.28076563985815167,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 15,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00015618665202055126,
+          "identity_cosine_drift": 0.0003643035888671875,
+          "blur_score": 0.27600641850301877,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "017",
+      "source_file": "clip_017.mp4",
+      "observation": {
+        "clip_id": "clip_017",
+        "face_embedding_variance": 0.000401869387133047,
+        "landmark_stability_score": 1.0,
+        "identity_cosine_drift": 0.00019508600234985352,
+        "frame_difference_mean": 2.951867809117103,
+        "optical_flow_magnitude": 1.7310226857147142,
+        "blink_count": 7,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.10719217563039604,
+        "exposure_score": 0.36908425915479176,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 16,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000401869387133047,
+          "identity_cosine_drift": 0.00019508600234985352,
+          "blur_score": 0.10719217563039604,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "018",
+      "source_file": "clip_018.mp4",
+      "observation": {
+        "clip_id": "clip_018",
+        "face_embedding_variance": 0.00021212715364526957,
+        "landmark_stability_score": 1.0,
+        "identity_cosine_drift": 0.0006207823753356934,
+        "frame_difference_mean": 2.9495224511959184,
+        "optical_flow_magnitude": 1.7634680748124303,
+        "blink_count": 17,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.12155450548900437,
+        "exposure_score": 0.36447865172430727,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 17,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00021212715364526957,
+          "identity_cosine_drift": 0.0006207823753356934,
+          "blur_score": 0.12155450548900437,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "019",
+      "source_file": "clip_019.mp4",
+      "observation": {
+        "clip_id": "clip_019",
+        "face_embedding_variance": 0.00017096419469453394,
+        "landmark_stability_score": 0.9735957094368686,
+        "identity_cosine_drift": 0.00026535987854003906,
+        "frame_difference_mean": 2.615839723841732,
+        "optical_flow_magnitude": 1.8017614131068989,
+        "blink_count": 13,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.1292387827245113,
+        "exposure_score": 0.3618859833664743,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 18,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00017096419469453394,
+          "identity_cosine_drift": 0.00026535987854003906,
+          "blur_score": 0.1292387827245113,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "020",
+      "source_file": "clip_020.mp4",
+      "observation": {
+        "clip_id": "clip_020",
+        "face_embedding_variance": 0.00010286563338013366,
+        "landmark_stability_score": 0.8489990416261338,
+        "identity_cosine_drift": 0.0011309385299682617,
+        "frame_difference_mean": 2.2862132864514577,
+        "optical_flow_magnitude": 1.7603559405834799,
+        "blink_count": 0,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.16698192028945008,
+        "exposure_score": 0.3611784151204796,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 19,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00010286563338013366,
+          "identity_cosine_drift": 0.0011309385299682617,
+          "blur_score": 0.16698192028945008,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "021",
+      "source_file": "clip_021.mp4",
+      "observation": {
+        "clip_id": "clip_021",
+        "face_embedding_variance": 0.00012046219490002841,
+        "landmark_stability_score": 0.6021401657335685,
+        "identity_cosine_drift": 0.00030165910720825195,
+        "frame_difference_mean": 0.810651473299472,
+        "optical_flow_magnitude": 6.3138014025611415,
+        "blink_count": 19,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.7319971256141485,
+        "exposure_score": 0.2786282346539296,
+        "occlusion_frames": 1,
+        "clips_audited_so_far": 20,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00012046219490002841,
+          "identity_cosine_drift": 0.00030165910720825195,
+          "blur_score": 0.7319971256141485,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "022",
+      "source_file": "clip_022.mp4",
+      "observation": {
+        "clip_id": "clip_022",
+        "face_embedding_variance": 0.0000498586923640687,
+        "landmark_stability_score": 0.4848916225519655,
+        "identity_cosine_drift": 0.00026917457580566406,
+        "frame_difference_mean": 1.0923911488501195,
+        "optical_flow_magnitude": 4.1446234163666364,
+        "blink_count": 12,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.7578639530979523,
+        "exposure_score": 0.26996847699262144,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 21,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0000498586923640687,
+          "identity_cosine_drift": 0.00026917457580566406,
+          "blur_score": 0.7578639530979523,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "023",
+      "source_file": "clip_023.mp4",
+      "observation": {
+        "clip_id": "clip_023",
+        "face_embedding_variance": 0.00006366240995703265,
+        "landmark_stability_score": 0.35990667636948404,
+        "identity_cosine_drift": 0.0010012388229370117,
+        "frame_difference_mean": 1.8564513653817802,
+        "optical_flow_magnitude": 2.4746134167216214,
+        "blink_count": 14,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9916243796575098,
+        "exposure_score": 0.362938816527924,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 22,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00006366240995703265,
+          "identity_cosine_drift": 0.0010012388229370117,
+          "blur_score": 0.9916243796575098,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "024",
+      "source_file": "clip_024.mp4",
+      "observation": {
+        "clip_id": "clip_024",
+        "face_embedding_variance": 0.00014053191989660263,
+        "landmark_stability_score": 0.6187264769962856,
+        "identity_cosine_drift": 0.00005930662155151367,
+        "frame_difference_mean": 1.9227308329514095,
+        "optical_flow_magnitude": 2.8198769052045325,
+        "blink_count": 43,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.46695633387503305,
+        "exposure_score": 0.21659488939441837,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 23,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "defer",
+          "suggested_confidence": 0.6,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00014053191989660263,
+          "identity_cosine_drift": 0.00005930662155151367,
+          "blur_score": 0.46695633387503305,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "025",
+      "source_file": "step_000000_1.mp4",
+      "observation": {
+        "clip_id": "step_000000_1",
+        "face_embedding_variance": 0.000006544675670738798,
+        "landmark_stability_score": 0.15963123832236636,
+        "identity_cosine_drift": 0.00009959936141967773,
+        "frame_difference_mean": 0.5320129318332131,
+        "optical_flow_magnitude": 2.068947141297868,
+        "blink_count": 0,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.6594573822732924,
+        "exposure_score": 0.34864294045265987,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 24,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "reject",
+        "confidence": 0.90,
+        "disposition_ambiguity": 0.0,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": "untrained model output — identity not established",
+          "face_embedding_variance": 0.000006544675670738798,
+          "identity_cosine_drift": 0.00009959936141967773,
+          "blur_score": 0.6594573822732924,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "026",
+      "source_file": "step_000000_2.mp4",
+      "observation": {
+        "clip_id": "step_000000_2",
+        "face_embedding_variance": 0.0000303667584375944,
+        "landmark_stability_score": 0.4668857859481465,
+        "identity_cosine_drift": 0.00014984607696533203,
+        "frame_difference_mean": 1.2276111092757096,
+        "optical_flow_magnitude": 3.303331270448321,
+        "blink_count": 24,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.5241479590506405,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 25,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "reject",
+        "confidence": 0.90,
+        "disposition_ambiguity": 0.0,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": "untrained model output — identity not established",
+          "face_embedding_variance": 0.0000303667584375944,
+          "identity_cosine_drift": 0.00014984607696533203,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "027",
+      "source_file": "step_000250_1.mp4",
+      "observation": {
+        "clip_id": "step_000250_1",
+        "face_embedding_variance": 0.00001125439848692622,
+        "landmark_stability_score": 0.234581802053885,
+        "identity_cosine_drift": 0.00012087821960449219,
+        "frame_difference_mean": 0.7712284697389061,
+        "optical_flow_magnitude": 2.275172693947163,
+        "blink_count": 3,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.8017510707620004,
+        "exposure_score": 0.35163528797859644,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 26,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "reject",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": "early training — identity unstable",
+          "face_embedding_variance": 0.00001125439848692622,
+          "identity_cosine_drift": 0.00012087821960449219,
+          "blur_score": 0.8017510707620004,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "028",
+      "source_file": "step_000250_2.mp4",
+      "observation": {
+        "clip_id": "step_000250_2",
+        "face_embedding_variance": 0.00006609236152144149,
+        "landmark_stability_score": 0.47832966579632324,
+        "identity_cosine_drift": 0.0012449026107788086,
+        "frame_difference_mean": 1.6113056504929608,
+        "optical_flow_magnitude": 3.0115588044903467,
+        "blink_count": 0,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9997199831371506,
+        "exposure_score": 0.5130190703721837,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 27,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "reject",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": "early training — identity unstable",
+          "face_embedding_variance": 0.00006609236152144149,
+          "identity_cosine_drift": 0.0012449026107788086,
+          "blur_score": 0.9997199831371506,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "029",
+      "source_file": "step_000500_1.mp4",
+      "observation": {
+        "clip_id": "step_000500_1",
+        "face_embedding_variance": 0.0000241410089074634,
+        "landmark_stability_score": 0.4255614943395961,
+        "identity_cosine_drift": 0.00012171268463134766,
+        "frame_difference_mean": 1.3440133585509928,
+        "optical_flow_magnitude": 2.439653294831765,
+        "blink_count": 3,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.6152944942850755,
+        "exposure_score": 0.31210475816835886,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 28,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "fix",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [
+          "verify identity consistency across full clip before use",
+          "trim any frames where face landmarks show instability"
+        ],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps",
+          "instability"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.0000241410089074634,
+          "identity_cosine_drift": 0.00012171268463134766,
+          "blur_score": 0.6152944942850755,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "030",
+      "source_file": "step_000500_2.mp4",
+      "observation": {
+        "clip_id": "step_000500_2",
+        "face_embedding_variance": 0.00006180939089972526,
+        "landmark_stability_score": 0.507076718156988,
+        "identity_cosine_drift": 0.00133591890335083,
+        "frame_difference_mean": 1.4686470770023086,
+        "optical_flow_magnitude": 3.0840427368598764,
+        "blink_count": 18,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9816227995767489,
+        "exposure_score": 0.48902941651948956,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 29,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "fix",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [
+          "verify identity consistency across full clip before use",
+          "trim any frames where face landmarks show instability"
+        ],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps",
+          "instability"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00006180939089972526,
+          "identity_cosine_drift": 0.00133591890335083,
+          "blur_score": 0.9816227995767489,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "031",
+      "source_file": "step_000750_1.mp4",
+      "observation": {
+        "clip_id": "step_000750_1",
+        "face_embedding_variance": 0.000021608204406220466,
+        "landmark_stability_score": 0.30285320368680085,
+        "identity_cosine_drift": 0.0001582503318786621,
+        "frame_difference_mean": 0.9391324323686686,
+        "optical_flow_magnitude": 2.900291583265643,
+        "blink_count": 8,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.3421897594974902,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 30,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "fix",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [
+          "verify identity consistency across full clip before use",
+          "trim any frames where face landmarks show instability"
+        ],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps",
+          "instability"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000021608204406220466,
+          "identity_cosine_drift": 0.0001582503318786621,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "032",
+      "source_file": "step_000750_2.mp4",
+      "observation": {
+        "clip_id": "step_000750_2",
+        "face_embedding_variance": 0.00005262094782665372,
+        "landmark_stability_score": 0.4701127534562891,
+        "identity_cosine_drift": 0.0028693675994873047,
+        "frame_difference_mean": 1.4344402192668482,
+        "optical_flow_magnitude": 3.0978187358070666,
+        "blink_count": 87,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.4917253183885426,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 31,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "fix",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [
+          "verify identity consistency across full clip before use",
+          "trim any frames where face landmarks show instability"
+        ],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps",
+          "instability"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00005262094782665372,
+          "identity_cosine_drift": 0.0028693675994873047,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "033",
+      "source_file": "step_001000_1.mp4",
+      "observation": {
+        "clip_id": "step_001000_1",
+        "face_embedding_variance": 0.00001545847590023186,
+        "landmark_stability_score": 0.33699184618212963,
+        "identity_cosine_drift": 0.00021773576736450195,
+        "frame_difference_mean": 0.9274841817942533,
+        "optical_flow_magnitude": 3.0650681733909932,
+        "blink_count": 7,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.3621580961939187,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 32,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00001545847590023186,
+          "identity_cosine_drift": 0.00021773576736450195,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "034",
+      "source_file": "step_001000_2.mp4",
+      "observation": {
+        "clip_id": "step_001000_2",
+        "face_embedding_variance": 0.000059197387599851936,
+        "landmark_stability_score": 0.5388117202845487,
+        "identity_cosine_drift": 0.0011390447616577148,
+        "frame_difference_mean": 1.5563915893435478,
+        "optical_flow_magnitude": 3.0001510612517928,
+        "blink_count": 8,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.47436526640123716,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 33,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.75,
+        "disposition_ambiguity": 0.3,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000059197387599851936,
+          "identity_cosine_drift": 0.0011390447616577148,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "035",
+      "source_file": "step_001250_1.mp4",
+      "observation": {
+        "clip_id": "step_001250_1",
+        "face_embedding_variance": 0.00002643960942805279,
+        "landmark_stability_score": 0.3414468584277413,
+        "identity_cosine_drift": 0.0007456541061401367,
+        "frame_difference_mean": 1.1696920317005028,
+        "optical_flow_magnitude": 2.9549373235055527,
+        "blink_count": 5,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.40759859957148525,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 34,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00002643960942805279,
+          "identity_cosine_drift": 0.0007456541061401367,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "036",
+      "source_file": "step_001250_2.mp4",
+      "observation": {
+        "clip_id": "step_001250_2",
+        "face_embedding_variance": 0.000034313019568799064,
+        "landmark_stability_score": 0.46173901601271194,
+        "identity_cosine_drift": 0.0009248256683349609,
+        "frame_difference_mean": 1.8772316412492231,
+        "optical_flow_magnitude": 2.6946502081347643,
+        "blink_count": 5,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.999572504014822,
+        "exposure_score": 0.4711969581329432,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 35,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000034313019568799064,
+          "identity_cosine_drift": 0.0009248256683349609,
+          "blur_score": 0.999572504014822,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "037",
+      "source_file": "step_001500_1.mp4",
+      "observation": {
+        "clip_id": "step_001500_1",
+        "face_embedding_variance": 0.000023385109670925885,
+        "landmark_stability_score": 0.3034077868678353,
+        "identity_cosine_drift": 0.0008510351181030273,
+        "frame_difference_mean": 0.9994496364485134,
+        "optical_flow_magnitude": 3.0196673362976445,
+        "blink_count": 5,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.3815049675607664,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 36,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000023385109670925885,
+          "identity_cosine_drift": 0.0008510351181030273,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "038",
+      "source_file": "step_001500_2.mp4",
+      "observation": {
+        "clip_id": "step_001500_2",
+        "face_embedding_variance": 0.00002773953565338161,
+        "landmark_stability_score": 0.4176030403917486,
+        "identity_cosine_drift": 0.0012664198875427246,
+        "frame_difference_mean": 1.583746057681062,
+        "optical_flow_magnitude": 3.0117888010327336,
+        "blink_count": 1,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9964351714392687,
+        "exposure_score": 0.4747900626690939,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 37,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00002773953565338161,
+          "identity_cosine_drift": 0.0012664198875427246,
+          "blur_score": 0.9964351714392687,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "039",
+      "source_file": "step_001750_1.mp4",
+      "observation": {
+        "clip_id": "step_001750_1",
+        "face_embedding_variance": 0.000025829183869063854,
+        "landmark_stability_score": 0.31684515216133813,
+        "identity_cosine_drift": 0.0009035468101501465,
+        "frame_difference_mean": 1.1333099122751842,
+        "optical_flow_magnitude": 2.8632720388340025,
+        "blink_count": 14,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.4030685464992192,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 38,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000025829183869063854,
+          "identity_cosine_drift": 0.0009035468101501465,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "040",
+      "source_file": "step_001750_2.mp4",
+      "observation": {
+        "clip_id": "step_001750_2",
+        "face_embedding_variance": 0.000029374479709076695,
+        "landmark_stability_score": 0.4147257125377655,
+        "identity_cosine_drift": 0.0013225078582763672,
+        "frame_difference_mean": 1.1589338870888406,
+        "optical_flow_magnitude": 3.136294353942478,
+        "blink_count": 0,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9860832111602167,
+        "exposure_score": 0.48261776484406915,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 39,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000029374479709076695,
+          "identity_cosine_drift": 0.0013225078582763672,
+          "blur_score": 0.9860832111602167,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "041",
+      "source_file": "step_002000_1.mp4",
+      "observation": {
+        "clip_id": "step_002000_1",
+        "face_embedding_variance": 0.000030607137887272984,
+        "landmark_stability_score": 0.323356196121736,
+        "identity_cosine_drift": 0.0010811686515808105,
+        "frame_difference_mean": 1.23245100135153,
+        "optical_flow_magnitude": 2.7614966837045998,
+        "blink_count": 13,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 1.0,
+        "exposure_score": 0.4183289848921295,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 40,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.000030607137887272984,
+          "identity_cosine_drift": 0.0010811686515808105,
+          "blur_score": 1.0,
+          "phoneme_sequence": []
+        }
+      }
+    },
+    {
+      "id": "042",
+      "source_file": "step_002000_2.mp4",
+      "observation": {
+        "clip_id": "step_002000_2",
+        "face_embedding_variance": 0.00003155313606839627,
+        "landmark_stability_score": 0.42695333426648924,
+        "identity_cosine_drift": 0.0010609030723571777,
+        "frame_difference_mean": 1.1383398341184312,
+        "optical_flow_magnitude": 3.154671677996283,
+        "blink_count": 6,
+        "lip_sync_confidence": 0.0,
+        "phoneme_sequence": [],
+        "phoneme_coverage_new": 0.0,
+        "blur_score": 0.9823429839782701,
+        "exposure_score": 0.48055554285195456,
+        "occlusion_frames": 0,
+        "clips_audited_so_far": 41,
+        "current_phoneme_coverage": {},
+        "current_pose_distribution": {},
+        "similar_clips_accepted": 0
+      },
+      "ground_truth": {
+        "disposition": "accept",
+        "confidence": 0.85,
+        "disposition_ambiguity": 0.1,
+        "valid_fix_steps": [],
+        "valid_override_justifications": [],
+        "expected_reasoning_elements": [
+          "phoneme",
+          "gaps"
+        ],
+        "_annotation_notes": {
+          "suggested_disposition": "accept",
+          "suggested_confidence": 0.75,
+          "identity_drift_severity": "none",
+          "lip_sync_quality": "absent",
+          "unique_phoneme_value": 0.0,
+          "dataset_redundancy_score": 0.0,
+          "estimated_training_impact": "neutral",
+          "primary_rejection_reason": null,
+          "face_embedding_variance": 0.00003155313606839627,
+          "identity_cosine_drift": 0.0010609030723571777,
+          "blur_score": 0.9823429839782701,
+          "phoneme_sequence": []
+        }
+      }
+    }
+  ]
+}

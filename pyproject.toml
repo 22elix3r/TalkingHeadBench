@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-talking-head-bench"
+version = "1.0.0"
+description = "TalkingHeadBench: A diagnostic reasoning benchmark for talking-head LoRA pipelines, featuring 9 deterministic evaluation nodes across 3 coupled sub-environments."
+requires-python = ">=3.10"
+dependencies = [
+    "openenv-core[core]>=0.2.2,<0.3",
+    "fastapi>=0.115.0",
+    "pydantic>=2.0",
+    "uvicorn>=0.24.0",
+    "numpy",
+    "torch",
+    "scipy",
+    "safetensors",
+    "opencv-python",
+    "mediapipe",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+server = "server.app:main"
+
+[tool.setuptools]
+include-package-data = true
+py-modules = ["client"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "server*"]

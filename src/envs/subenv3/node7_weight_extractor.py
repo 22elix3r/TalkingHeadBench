@@ -13,9 +13,9 @@ column-space factorization ambiguity.
 alongside the ``.safetensors`` file.  It is NOT derived from the weights.  If
 ``tokenizer_config_path`` is ``None``, the field is set to ``None``.
 
-Statistic formulas (verbatim from spec):
+Statistic formulas:
   - Layer norms:         ``torch.linalg.norm(canonical_effective_update)``
-  - Layer entropy:       ``scipy.stats.entropy(softmax(Vt_rows, axis=1))``
+    - Layer entropy:       inverted normalized entropy of canonical singular values
   - Rank utilization:    from canonical SVD S directly (no extra computation)
 """
 
@@ -27,13 +27,16 @@ from typing import Optional
 
 import numpy as np
 import torch
-import torch.nn.functional as F
-from scipy.stats import entropy as scipy_entropy
 from safetensors.torch import load_file
 
 from src.schemas.subenv2 import SyntheticWeightDescriptor
 from src.schemas.subenv3 import WeightSignalObservation
-from src.utils.canonical import CanonicalComponents, canonicalize_lora_factors
+from src.utils.canonical import (
+    CanonicalComponents,
+    canonicalize_lora_factors,
+    layer_entropy_from_singular_values,
+    singular_direction_anomaly_scores,
+)
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -149,28 +152,22 @@ def _layer_rank_utilization_from_canonical(cc: CanonicalComponents) -> float:
 
 
 def _layer_entropy_from_canonical(cc: CanonicalComponents) -> float:
-    """Mean entropy of canonical Vt rows.
+    """Inverted normalized entropy of canonical singular values.
 
-    Per spec: ``scipy.stats.entropy(softmax(Vt_rows, axis=1))``.
-    Each row of Vt (shape ``(rank, in_features)``) is converted to a
-    probability distribution via softmax before computing Shannon entropy.
-    Returns the mean entropy across all rows.
+    Returns a value in [0, 1] where:
+      - 0.0 indicates uniform singular values (healthy utilization),
+      - 1.0 indicates concentrated energy (rank collapse tendency).
     """
-    vt = cc.Vt  # (rank, in_features)
-    if vt.numel() == 0:
-        return 0.0
-    probs = F.softmax(vt, dim=1).detach().cpu().numpy()   # (rank, in_features)
-    row_entropies = [float(scipy_entropy(row)) for row in probs]
-    return float(np.mean(row_entropies))
+    return layer_entropy_from_singular_values(cc.S)
 
 
 def _per_row_entropies(cc: CanonicalComponents) -> list[float]:
-    """Per-row (per singular direction) Vt entropy, for anomaly detection."""
-    vt = cc.Vt
-    if vt.numel() == 0:
-        return []
-    probs = F.softmax(vt, dim=1).detach().cpu().numpy()
-    return [float(scipy_entropy(row)) for row in probs]
+    """Per-direction anomaly scores from normalized singular values.
+
+    Values are in [0, 1]; higher values indicate singular directions that
+    dominate layer energy.
+    """
+    return singular_direction_anomaly_scores(cc.S)
 
 
 def _u_column_norm_variance(cc: CanonicalComponents) -> float:
@@ -395,9 +392,9 @@ def extract_weight_signals(
     layer_rank_utilization: dict[str, float] = {}
     canonical_entropy_per_layer: dict[str, float] = {}
 
-    # Collect all S values for histogram and per-row entropies for anomaly detection
+    # Collect all S values for histogram and per-direction anomaly scores
     all_s_values: list[float] = []
-    all_row_entropies: list[tuple[int, float]] = []  # (token_position, entropy)
+    all_row_entropies: list[tuple[int, float]] = []  # (position_idx, anomaly_score)
 
     for name, cc in layer_canonical.items():
         layer_norms[name] = _layer_norm_from_canonical(cc)
@@ -411,13 +408,13 @@ def extract_weight_signals(
             all_row_entropies.append((row_idx, h))
 
     # ------------------------------------------------------------------
-    # High-entropy token positions (Vt-row anomalies across all layers)
+    # High-entropy token positions (anomalous singular directions across layers)
     # ------------------------------------------------------------------
     if all_row_entropies:
         entropies_only = np.array([e for _, e in all_row_entropies], dtype=np.float32)
         mu = float(entropies_only.mean())
         sigma = float(entropies_only.std())
-        threshold = mu + _ENTROPY_ANOMALY_SIGMA * sigma
+        threshold = max(mu + _ENTROPY_ANOMALY_SIGMA * sigma, 0.1)
         high_entropy_token_positions: list[int] = sorted(
             set(
                 pos

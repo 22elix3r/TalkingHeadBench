@@ -1,0 +1,3558 @@
+{
+  "cases": [
+    {
+      "id": "001",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_001.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [],
+          "layer_anomaly_flags": [],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "No anomalies detected."
+        },
+        "high_entropy_token_flags": [],
+        "phoneme_vocabulary": [
+          "AH",
+          "OW",
+          "EE"
+        ],
+        "phoneme_to_token_indices": {
+          "AH": [
+            1
+          ],
+          "OW": [
+            2
+          ],
+          "EE": [
+            3
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AH": 0.1,
+          "OW": 0.15,
+          "EE": 0.12
+        },
+        "phoneme_influence_scores": {
+          "AH": 0.08,
+          "OW": 0.1,
+          "EE": 0.09
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [],
+        "predicted_behavior_triggers": [],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "safe",
+        "valid_mitigation_set": []
+      }
+    },
+    {
+      "id": "002",
+      "source_file": "ltx_2.3_talking_head_av_lora_v1.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "ltx_2.3_talking_head_av_lora_v1.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.1.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.78125,
+              "evidence": "Sparsity 0.781 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.65625,
+              "evidence": "Sparsity 0.656 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 3 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.26245937864177343,
+          "AE": 0.26245937864177343,
+          "AH": 0.26245937864177343,
+          "AO": 0.17497291909451562,
+          "AW": 0.17497291909451562,
+          "AY": 0.17497291909451562,
+          "B": 0.17497291909451562,
+          "CH": 0.17497291909451562,
+          "D": 0.17497291909451562,
+          "DH": 0.17497291909451562,
+          "EH": 0.17497291909451562,
+          "ER": 0.17497291909451562,
+          "EY": 0.17497291909451562,
+          "F": 0.17497291909451562,
+          "G": 0.17497291909451562,
+          "HH": 0.17497291909451562,
+          "IH": 0.17497291909451562,
+          "IY": 0.17497291909451562,
+          "JH": 0.17497291909451562,
+          "K": 0.17497291909451562,
+          "L": 0.17497291909451562,
+          "M": 0.17497291909451562,
+          "N": 0.17497291909451562,
+          "NG": 0.17497291909451562,
+          "OW": 0.17497291909451562,
+          "OY": 0.17497291909451562,
+          "P": 0.17497291909451562,
+          "R": 0.17497291909451562,
+          "S": 0.17497291909451562,
+          "SH": 0.17497291909451562,
+          "T": 0.17497291909451562,
+          "TH": 0.17497291909451562,
+          "UH": 0.17497291909451562,
+          "UW": 0.17497291909451562,
+          "V": 0.17497291909451562,
+          "W": 0.17497291909451562,
+          "Y": 0.17497291909451562,
+          "Z": 0.17497291909451562,
+          "ZH": 0.17497291909451562
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [],
+        "predicted_behavior_triggers": [],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "ANNOTATE",
+        "valid_mitigation_set": [],
+        "_annotation_notes": {
+          "tokenizer_source": "arpabet_sequential",
+          "suggested_behavioral_safety": "high_risk",
+          "suggested_training_quality": "healthy",
+          "suggested_rank_assessment": "efficient",
+          "suggested_overall_behavioral_risk": "low",
+          "high_entropy_token_count": 3,
+          "top_risk_phonemes": [
+            {
+              "phoneme": "AA",
+              "risk_score": 0.705,
+              "risk_type": "motion_trigger",
+              "confidence": 0.2625
+            },
+            {
+              "phoneme": "AE",
+              "risk_score": 0.705,
+              "risk_type": "motion_trigger",
+              "confidence": 0.2625
+            },
+            {
+              "phoneme": "AH",
+              "risk_score": 0.705,
+              "risk_type": "motion_trigger",
+              "confidence": 0.2625
+            }
+          ],
+          "suggested_behavior_triggers": [
+            {
+              "trigger_phoneme": "AA",
+              "triggered_behavior": "head_turn",
+              "association_strength": 0.705,
+              "concern_level": "medium"
+            },
+            {
+              "trigger_phoneme": "AE",
+              "triggered_behavior": "head_turn",
+              "association_strength": 0.705,
+              "concern_level": "medium"
+            },
+            {
+              "trigger_phoneme": "AH",
+              "triggered_behavior": "head_turn",
+              "association_strength": 0.705,
+              "concern_level": "medium"
+            }
+          ],
+          "suggested_mitigations": [
+            {
+              "target": "motion_trigger cluster: ['AA', 'AE', 'AH']",
+              "action": "retrain_with_more_data",
+              "priority": "critical"
+            }
+          ],
+          "summary": "Behavioral safety: high_risk. 3 phonemes flagged. Top risk: AA (motion_trigger)."
+        }
+      }
+    },
+    {
+      "id": "003",
+      "source_file": "lora_weights_step_00250.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_00250.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.22008167950843666,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.22008167950843666,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.22008167950843666,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.0.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.2.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.625,
+              "evidence": "Sparsity 0.625 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.99). 3 high-entropy token position(s) flagged. 3 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.22008167950843666,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.22008167950843666,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.22008167950843666,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.147"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.22008167950843666,
+          "AE": 0.22008167950843666,
+          "AH": 0.22008167950843666,
+          "AO": 0.1467211196722911,
+          "AW": 0.1467211196722911,
+          "AY": 0.1467211196722911,
+          "B": 0.1467211196722911,
+          "CH": 0.1467211196722911,
+          "D": 0.1467211196722911,
+          "DH": 0.1467211196722911,
+          "EH": 0.1467211196722911,
+          "ER": 0.1467211196722911,
+          "EY": 0.1467211196722911,
+          "F": 0.1467211196722911,
+          "G": 0.1467211196722911,
+          "HH": 0.1467211196722911,
+          "IH": 0.1467211196722911,
+          "IY": 0.1467211196722911,
+          "JH": 0.1467211196722911,
+          "K": 0.1467211196722911,
+          "L": 0.1467211196722911,
+          "M": 0.1467211196722911,
+          "N": 0.1467211196722911,
+          "NG": 0.1467211196722911,
+          "OW": 0.1467211196722911,
+          "OY": 0.1467211196722911,
+          "P": 0.1467211196722911,
+          "R": 0.1467211196722911,
+          "S": 0.1467211196722911,
+          "SH": 0.1467211196722911,
+          "T": 0.1467211196722911,
+          "TH": 0.1467211196722911,
+          "UH": 0.1467211196722911,
+          "UW": 0.1467211196722911,
+          "V": 0.1467211196722911,
+          "W": 0.1467211196722911,
+          "Y": 0.1467211196722911,
+          "Z": 0.1467211196722911,
+          "ZH": 0.1467211196722911
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.75,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift in early training"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.72,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.65,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "SH",
+            "risk_score": 0.60,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "EY",
+            "risk_score": 0.55,
+            "risk_type": "expression_trigger",
+            "confidence": 0.4,
+            "evidence": "diphthong with high-front component, borderline drift"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.75,
+            "is_intended": false,
+            "concern_level": "high"
+          },
+          {
+            "trigger_phoneme": "EE",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.72,
+            "is_intended": false,
+            "concern_level": "high"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.65,
+            "is_intended": false,
+            "concern_level": "medium"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "high_risk",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "retrain_with_more_data"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "retrain_with_more_data"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "004",
+      "source_file": "lora_weights_step_00500.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_00500.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2393684607026187,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.160"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2393684607026187,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.160"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.6875,
+              "evidence": "Sparsity 0.688 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 2 high-entropy token position(s) flagged. 1 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2393684607026187,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.160"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2393684607026187,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.160"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 0.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2393684607026187,
+          "AE": 0.2393684607026187,
+          "AH": 0.1595789738017458,
+          "AO": 0.1595789738017458,
+          "AW": 0.1595789738017458,
+          "AY": 0.1595789738017458,
+          "B": 0.1595789738017458,
+          "CH": 0.1595789738017458,
+          "D": 0.1595789738017458,
+          "DH": 0.1595789738017458,
+          "EH": 0.1595789738017458,
+          "ER": 0.1595789738017458,
+          "EY": 0.1595789738017458,
+          "F": 0.1595789738017458,
+          "G": 0.1595789738017458,
+          "HH": 0.1595789738017458,
+          "IH": 0.1595789738017458,
+          "IY": 0.1595789738017458,
+          "JH": 0.1595789738017458,
+          "K": 0.1595789738017458,
+          "L": 0.1595789738017458,
+          "M": 0.1595789738017458,
+          "N": 0.1595789738017458,
+          "NG": 0.1595789738017458,
+          "OW": 0.1595789738017458,
+          "OY": 0.1595789738017458,
+          "P": 0.1595789738017458,
+          "R": 0.1595789738017458,
+          "S": 0.1595789738017458,
+          "SH": 0.1595789738017458,
+          "T": 0.1595789738017458,
+          "TH": 0.1595789738017458,
+          "UH": 0.1595789738017458,
+          "UW": 0.1595789738017458,
+          "V": 0.1595789738017458,
+          "W": 0.1595789738017458,
+          "Y": 0.1595789738017458,
+          "Z": 0.1595789738017458,
+          "ZH": 0.1595789738017458
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.75,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift in early training"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.72,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.65,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "SH",
+            "risk_score": 0.60,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "EY",
+            "risk_score": 0.55,
+            "risk_type": "expression_trigger",
+            "confidence": 0.4,
+            "evidence": "diphthong with high-front component, borderline drift"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.75,
+            "is_intended": false,
+            "concern_level": "high"
+          },
+          {
+            "trigger_phoneme": "EE",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.72,
+            "is_intended": false,
+            "concern_level": "high"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.65,
+            "is_intended": false,
+            "concern_level": "medium"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "high_risk",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "retrain_with_more_data"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "retrain_with_more_data"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "005",
+      "source_file": "lora_weights_step_00750.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_00750.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2493067328872405,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2493067328872405,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2493067328872405,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.71875,
+              "evidence": "Sparsity 0.719 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.59375,
+              "evidence": "Sparsity 0.594 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 2 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2493067328872405,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2493067328872405,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2493067328872405,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.166"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2493067328872405,
+          "AE": 0.2493067328872405,
+          "AH": 0.2493067328872405,
+          "AO": 0.16620448859149367,
+          "AW": 0.16620448859149367,
+          "AY": 0.16620448859149367,
+          "B": 0.16620448859149367,
+          "CH": 0.16620448859149367,
+          "D": 0.16620448859149367,
+          "DH": 0.16620448859149367,
+          "EH": 0.16620448859149367,
+          "ER": 0.16620448859149367,
+          "EY": 0.16620448859149367,
+          "F": 0.16620448859149367,
+          "G": 0.16620448859149367,
+          "HH": 0.16620448859149367,
+          "IH": 0.16620448859149367,
+          "IY": 0.16620448859149367,
+          "JH": 0.16620448859149367,
+          "K": 0.16620448859149367,
+          "L": 0.16620448859149367,
+          "M": 0.16620448859149367,
+          "N": 0.16620448859149367,
+          "NG": 0.16620448859149367,
+          "OW": 0.16620448859149367,
+          "OY": 0.16620448859149367,
+          "P": 0.16620448859149367,
+          "R": 0.16620448859149367,
+          "S": 0.16620448859149367,
+          "SH": 0.16620448859149367,
+          "T": 0.16620448859149367,
+          "TH": 0.16620448859149367,
+          "UH": 0.16620448859149367,
+          "UW": 0.16620448859149367,
+          "V": 0.16620448859149367,
+          "W": 0.16620448859149367,
+          "Y": 0.16620448859149367,
+          "Z": 0.16620448859149367,
+          "ZH": 0.16620448859149367
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.60,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift in early training"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.57,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.50,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "SH",
+            "risk_score": 0.45,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "EY",
+            "risk_score": 0.40,
+            "risk_type": "expression_trigger",
+            "confidence": 0.4,
+            "evidence": "diphthong with high-front component, borderline drift"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.75,
+            "is_intended": false,
+            "concern_level": "medium"
+          },
+          {
+            "trigger_phoneme": "EE",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.72,
+            "is_intended": false,
+            "concern_level": "medium"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.65,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "moderate_risk",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "retrain_with_more_data"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "retrain_with_more_data"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "006",
+      "source_file": "lora_weights_step_01000.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_01000.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2545210089968543,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2545210089968543,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2545210089968543,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.75,
+              "evidence": "Sparsity 0.750 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.6875,
+              "evidence": "Sparsity 0.688 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 2 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2545210089968543,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2545210089968543,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2545210089968543,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.170"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2545210089968543,
+          "AE": 0.2545210089968543,
+          "AH": 0.2545210089968543,
+          "AO": 0.16968067266456954,
+          "AW": 0.16968067266456954,
+          "AY": 0.16968067266456954,
+          "B": 0.16968067266456954,
+          "CH": 0.16968067266456954,
+          "D": 0.16968067266456954,
+          "DH": 0.16968067266456954,
+          "EH": 0.16968067266456954,
+          "ER": 0.16968067266456954,
+          "EY": 0.16968067266456954,
+          "F": 0.16968067266456954,
+          "G": 0.16968067266456954,
+          "HH": 0.16968067266456954,
+          "IH": 0.16968067266456954,
+          "IY": 0.16968067266456954,
+          "JH": 0.16968067266456954,
+          "K": 0.16968067266456954,
+          "L": 0.16968067266456954,
+          "M": 0.16968067266456954,
+          "N": 0.16968067266456954,
+          "NG": 0.16968067266456954,
+          "OW": 0.16968067266456954,
+          "OY": 0.16968067266456954,
+          "P": 0.16968067266456954,
+          "R": 0.16968067266456954,
+          "S": 0.16968067266456954,
+          "SH": 0.16968067266456954,
+          "T": 0.16968067266456954,
+          "TH": 0.16968067266456954,
+          "UH": 0.16968067266456954,
+          "UW": 0.16968067266456954,
+          "V": 0.16968067266456954,
+          "W": 0.16968067266456954,
+          "Y": 0.16968067266456954,
+          "Z": 0.16968067266456954,
+          "ZH": 0.16968067266456954
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.60,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift in early training"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.57,
+            "risk_type": "identity_trigger",
+            "confidence": 0.6,
+            "evidence": "high-front vowel associated with eyeball drift"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.50,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "SH",
+            "risk_score": 0.45,
+            "risk_type": "motion_trigger",
+            "confidence": 0.5,
+            "evidence": "sibilant associated with audio buzz artifacts"
+          },
+          {
+            "phoneme": "EY",
+            "risk_score": 0.40,
+            "risk_type": "expression_trigger",
+            "confidence": 0.4,
+            "evidence": "diphthong with high-front component, borderline drift"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.75,
+            "is_intended": false,
+            "concern_level": "medium"
+          },
+          {
+            "trigger_phoneme": "EE",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.72,
+            "is_intended": false,
+            "concern_level": "medium"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.65,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "moderate_risk",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "retrain_with_more_data"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "retrain_with_more_data"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "007",
+      "source_file": "lora_weights_step_01250.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_01250.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2596460397707507,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2596460397707507,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2596460397707507,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.0.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.1.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.78125,
+              "evidence": "Sparsity 0.781 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.65625,
+              "evidence": "Sparsity 0.656 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 4 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2596460397707507,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2596460397707507,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2596460397707507,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.173"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2596460397707507,
+          "AE": 0.2596460397707507,
+          "AH": 0.2596460397707507,
+          "AO": 0.17309735984716712,
+          "AW": 0.17309735984716712,
+          "AY": 0.17309735984716712,
+          "B": 0.17309735984716712,
+          "CH": 0.17309735984716712,
+          "D": 0.17309735984716712,
+          "DH": 0.17309735984716712,
+          "EH": 0.17309735984716712,
+          "ER": 0.17309735984716712,
+          "EY": 0.17309735984716712,
+          "F": 0.17309735984716712,
+          "G": 0.17309735984716712,
+          "HH": 0.17309735984716712,
+          "IH": 0.17309735984716712,
+          "IY": 0.17309735984716712,
+          "JH": 0.17309735984716712,
+          "K": 0.17309735984716712,
+          "L": 0.17309735984716712,
+          "M": 0.17309735984716712,
+          "N": 0.17309735984716712,
+          "NG": 0.17309735984716712,
+          "OW": 0.17309735984716712,
+          "OY": 0.17309735984716712,
+          "P": 0.17309735984716712,
+          "R": 0.17309735984716712,
+          "S": 0.17309735984716712,
+          "SH": 0.17309735984716712,
+          "T": 0.17309735984716712,
+          "TH": 0.17309735984716712,
+          "UH": 0.17309735984716712,
+          "UW": 0.17309735984716712,
+          "V": 0.17309735984716712,
+          "W": 0.17309735984716712,
+          "Y": 0.17309735984716712,
+          "Z": 0.17309735984716712,
+          "ZH": 0.17309735984716712
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.45,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift observed in step_01250+ outputs"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.42,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift, high-front vowel"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.38,
+            "risk_type": "motion_trigger",
+            "confidence": 0.6,
+            "evidence": "slight audio buzz on sibilants in final checkpoint"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.45,
+            "is_intended": false,
+            "concern_level": "low"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.38,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "minor_concerns",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "add_counter_examples"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "flag_for_manual_review"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "008",
+      "source_file": "lora_weights_step_01500.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_01500.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2613942411774137,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2613942411774137,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2613942411774137,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.78125,
+              "evidence": "Sparsity 0.781 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.65625,
+              "evidence": "Sparsity 0.656 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 2 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2613942411774137,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2613942411774137,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2613942411774137,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.174"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2613942411774137,
+          "AE": 0.2613942411774137,
+          "AH": 0.2613942411774137,
+          "AO": 0.17426282745160915,
+          "AW": 0.17426282745160915,
+          "AY": 0.17426282745160915,
+          "B": 0.17426282745160915,
+          "CH": 0.17426282745160915,
+          "D": 0.17426282745160915,
+          "DH": 0.17426282745160915,
+          "EH": 0.17426282745160915,
+          "ER": 0.17426282745160915,
+          "EY": 0.17426282745160915,
+          "F": 0.17426282745160915,
+          "G": 0.17426282745160915,
+          "HH": 0.17426282745160915,
+          "IH": 0.17426282745160915,
+          "IY": 0.17426282745160915,
+          "JH": 0.17426282745160915,
+          "K": 0.17426282745160915,
+          "L": 0.17426282745160915,
+          "M": 0.17426282745160915,
+          "N": 0.17426282745160915,
+          "NG": 0.17426282745160915,
+          "OW": 0.17426282745160915,
+          "OY": 0.17426282745160915,
+          "P": 0.17426282745160915,
+          "R": 0.17426282745160915,
+          "S": 0.17426282745160915,
+          "SH": 0.17426282745160915,
+          "T": 0.17426282745160915,
+          "TH": 0.17426282745160915,
+          "UH": 0.17426282745160915,
+          "UW": 0.17426282745160915,
+          "V": 0.17426282745160915,
+          "W": 0.17426282745160915,
+          "Y": 0.17426282745160915,
+          "Z": 0.17426282745160915,
+          "ZH": 0.17426282745160915
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.45,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift observed in step_01250+ outputs"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.42,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift, high-front vowel"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.38,
+            "risk_type": "motion_trigger",
+            "confidence": 0.6,
+            "evidence": "slight audio buzz on sibilants in final checkpoint"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.45,
+            "is_intended": false,
+            "concern_level": "low"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.38,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "minor_concerns",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "add_counter_examples"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "flag_for_manual_review"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "009",
+      "source_file": "lora_weights_step_01750.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_01750.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2618477084151766,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.2618477084151766,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.1.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.75,
+              "evidence": "Sparsity 0.750 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.65625,
+              "evidence": "Sparsity 0.656 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 2 high-entropy token position(s) flagged. 3 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2618477084151766,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.2618477084151766,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 0.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.2618477084151766,
+          "AE": 0.2618477084151766,
+          "AH": 0.17456513894345108,
+          "AO": 0.17456513894345108,
+          "AW": 0.17456513894345108,
+          "AY": 0.17456513894345108,
+          "B": 0.17456513894345108,
+          "CH": 0.17456513894345108,
+          "D": 0.17456513894345108,
+          "DH": 0.17456513894345108,
+          "EH": 0.17456513894345108,
+          "ER": 0.17456513894345108,
+          "EY": 0.17456513894345108,
+          "F": 0.17456513894345108,
+          "G": 0.17456513894345108,
+          "HH": 0.17456513894345108,
+          "IH": 0.17456513894345108,
+          "IY": 0.17456513894345108,
+          "JH": 0.17456513894345108,
+          "K": 0.17456513894345108,
+          "L": 0.17456513894345108,
+          "M": 0.17456513894345108,
+          "N": 0.17456513894345108,
+          "NG": 0.17456513894345108,
+          "OW": 0.17456513894345108,
+          "OY": 0.17456513894345108,
+          "P": 0.17456513894345108,
+          "R": 0.17456513894345108,
+          "S": 0.17456513894345108,
+          "SH": 0.17456513894345108,
+          "T": 0.17456513894345108,
+          "TH": 0.17456513894345108,
+          "UH": 0.17456513894345108,
+          "UW": 0.17456513894345108,
+          "V": 0.17456513894345108,
+          "W": 0.17456513894345108,
+          "Y": 0.17456513894345108,
+          "Z": 0.17456513894345108,
+          "ZH": 0.17456513894345108
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.45,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift observed in step_01250+ outputs"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.42,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift, high-front vowel"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.38,
+            "risk_type": "motion_trigger",
+            "confidence": 0.6,
+            "evidence": "slight audio buzz on sibilants in final checkpoint"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.45,
+            "is_intended": false,
+            "concern_level": "low"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.38,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "minor_concerns",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "add_counter_examples"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "flag_for_manual_review"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "010",
+      "source_file": "lora_weights_step_02000.safetensors",
+      "observation": {
+        "weight_evidence": {
+          "weight_file_id": "lora_weights_step_02000.safetensors",
+          "training_quality": "healthy",
+          "rank_utilization_assessment": "efficient",
+          "high_entropy_token_flags": [
+            {
+              "token_position": 0,
+              "mapped_phoneme": "AA",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            },
+            {
+              "token_position": 1,
+              "mapped_phoneme": "AE",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            },
+            {
+              "token_position": 2,
+              "mapped_phoneme": "AH",
+              "anomaly_type": "excessive_influence",
+              "severity": 0.26245937864177343,
+              "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+            }
+          ],
+          "layer_anomaly_flags": [
+            {
+              "layer_name": "diffusion_model.transformer_blocks.1.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.53125,
+              "evidence": "Sparsity 0.531 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.3.video_to_audio_attn.to_v",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.78125,
+              "evidence": "Sparsity 0.781 - majority of canonical S near zero"
+            },
+            {
+              "layer_name": "diffusion_model.transformer_blocks.5.video_to_audio_attn.to_k",
+              "anomaly_type": "sparsity_anomaly",
+              "severity": 0.65625,
+              "evidence": "Sparsity 0.656 - majority of canonical S near zero"
+            }
+          ],
+          "overall_behavioral_risk": "low",
+          "evidence_summary": "Training quality: healthy. Rank utilization: efficient (mean 0.98). 3 high-entropy token position(s) flagged. 3 layer anomaly/anomalies detected. Overall risk: low."
+        },
+        "high_entropy_token_flags": [
+          {
+            "token_position": 0,
+            "mapped_phoneme": "AA",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 0 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          },
+          {
+            "token_position": 1,
+            "mapped_phoneme": "AE",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 1 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          },
+          {
+            "token_position": 2,
+            "mapped_phoneme": "AH",
+            "anomaly_type": "excessive_influence",
+            "severity": 0.26245937864177343,
+            "evidence": "Token position 2 flagged as high-entropy in canonical Vt analysis; layer entropy mean 0.175"
+          }
+        ],
+        "phoneme_vocabulary": [
+          "AA",
+          "AE",
+          "AH",
+          "AO",
+          "AW",
+          "AY",
+          "B",
+          "CH",
+          "D",
+          "DH",
+          "EH",
+          "ER",
+          "EY",
+          "F",
+          "G",
+          "HH",
+          "IH",
+          "IY",
+          "JH",
+          "K",
+          "L",
+          "M",
+          "N",
+          "NG",
+          "OW",
+          "OY",
+          "P",
+          "R",
+          "S",
+          "SH",
+          "T",
+          "TH",
+          "UH",
+          "UW",
+          "V",
+          "W",
+          "Y",
+          "Z",
+          "ZH"
+        ],
+        "phoneme_to_token_indices": {
+          "AA": [
+            0
+          ],
+          "AE": [
+            1
+          ],
+          "AH": [
+            2
+          ],
+          "AO": [
+            3
+          ],
+          "AW": [
+            4
+          ],
+          "AY": [
+            5
+          ],
+          "B": [
+            6
+          ],
+          "CH": [
+            7
+          ],
+          "D": [
+            8
+          ],
+          "DH": [
+            9
+          ],
+          "EH": [
+            10
+          ],
+          "ER": [
+            11
+          ],
+          "EY": [
+            12
+          ],
+          "F": [
+            13
+          ],
+          "G": [
+            14
+          ],
+          "HH": [
+            15
+          ],
+          "IH": [
+            16
+          ],
+          "IY": [
+            17
+          ],
+          "JH": [
+            18
+          ],
+          "K": [
+            19
+          ],
+          "L": [
+            20
+          ],
+          "M": [
+            21
+          ],
+          "N": [
+            22
+          ],
+          "NG": [
+            23
+          ],
+          "OW": [
+            24
+          ],
+          "OY": [
+            25
+          ],
+          "P": [
+            26
+          ],
+          "R": [
+            27
+          ],
+          "S": [
+            28
+          ],
+          "SH": [
+            29
+          ],
+          "T": [
+            30
+          ],
+          "TH": [
+            31
+          ],
+          "UH": [
+            32
+          ],
+          "UW": [
+            33
+          ],
+          "V": [
+            34
+          ],
+          "W": [
+            35
+          ],
+          "Y": [
+            36
+          ],
+          "Z": [
+            37
+          ],
+          "ZH": [
+            38
+          ]
+        },
+        "phoneme_entropy_scores": {
+          "AA": 1.0,
+          "AE": 1.0,
+          "AH": 1.0,
+          "AO": 0.0,
+          "AW": 0.0,
+          "AY": 0.0,
+          "B": 0.0,
+          "CH": 0.0,
+          "D": 0.0,
+          "DH": 0.0,
+          "EH": 0.0,
+          "ER": 0.0,
+          "EY": 0.0,
+          "F": 0.0,
+          "G": 0.0,
+          "HH": 0.0,
+          "IH": 0.0,
+          "IY": 0.0,
+          "JH": 0.0,
+          "K": 0.0,
+          "L": 0.0,
+          "M": 0.0,
+          "N": 0.0,
+          "NG": 0.0,
+          "OW": 0.0,
+          "OY": 0.0,
+          "P": 0.0,
+          "R": 0.0,
+          "S": 0.0,
+          "SH": 0.0,
+          "T": 0.0,
+          "TH": 0.0,
+          "UH": 0.0,
+          "UW": 0.0,
+          "V": 0.0,
+          "W": 0.0,
+          "Y": 0.0,
+          "Z": 0.0,
+          "ZH": 0.0
+        },
+        "phoneme_influence_scores": {
+          "AA": 0.26245937864177343,
+          "AE": 0.26245937864177343,
+          "AH": 0.26245937864177343,
+          "AO": 0.17497291909451562,
+          "AW": 0.17497291909451562,
+          "AY": 0.17497291909451562,
+          "B": 0.17497291909451562,
+          "CH": 0.17497291909451562,
+          "D": 0.17497291909451562,
+          "DH": 0.17497291909451562,
+          "EH": 0.17497291909451562,
+          "ER": 0.17497291909451562,
+          "EY": 0.17497291909451562,
+          "F": 0.17497291909451562,
+          "G": 0.17497291909451562,
+          "HH": 0.17497291909451562,
+          "IH": 0.17497291909451562,
+          "IY": 0.17497291909451562,
+          "JH": 0.17497291909451562,
+          "K": 0.17497291909451562,
+          "L": 0.17497291909451562,
+          "M": 0.17497291909451562,
+          "N": 0.17497291909451562,
+          "NG": 0.17497291909451562,
+          "OW": 0.17497291909451562,
+          "OY": 0.17497291909451562,
+          "P": 0.17497291909451562,
+          "R": 0.17497291909451562,
+          "S": 0.17497291909451562,
+          "SH": 0.17497291909451562,
+          "T": 0.17497291909451562,
+          "TH": 0.17497291909451562,
+          "UH": 0.17497291909451562,
+          "UW": 0.17497291909451562,
+          "V": 0.17497291909451562,
+          "W": 0.17497291909451562,
+          "Y": 0.17497291909451562,
+          "Z": 0.17497291909451562,
+          "ZH": 0.17497291909451562
+        },
+        "phoneme_cooccurrence_anomalies": [],
+        "behavior_vocabulary": [
+          "smile",
+          "blink",
+          "head_turn",
+          "jaw_drift",
+          "brow_raise"
+        ],
+        "training_data_phoneme_distribution": null,
+        "suspected_anomalous_phonemes_from_subenv2": null
+      },
+      "ground_truth": {
+        "phoneme_risk_ranking": [
+          {
+            "phoneme": "IY",
+            "risk_score": 0.45,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift observed in step_01250+ outputs"
+          },
+          {
+            "phoneme": "EE",
+            "risk_score": 0.42,
+            "risk_type": "identity_trigger",
+            "confidence": 0.7,
+            "evidence": "minor eyeball drift, high-front vowel"
+          },
+          {
+            "phoneme": "S",
+            "risk_score": 0.38,
+            "risk_type": "motion_trigger",
+            "confidence": 0.6,
+            "evidence": "slight audio buzz on sibilants in final checkpoint"
+          }
+        ],
+        "predicted_behavior_triggers": [
+          {
+            "trigger_phoneme": "IY",
+            "triggered_behavior": "jaw_drift",
+            "association_strength": 0.45,
+            "is_intended": false,
+            "concern_level": "low"
+          },
+          {
+            "trigger_phoneme": "S",
+            "triggered_behavior": "head_turn",
+            "association_strength": 0.38,
+            "is_intended": false,
+            "concern_level": "low"
+          }
+        ],
+        "risky_phoneme_clusters": [],
+        "model_behavioral_safety": "minor_concerns",
+        "valid_mitigation_set": [
+          [
+            "IY/EE/EY vowel cluster",
+            "add_counter_examples"
+          ],
+          [
+            "S/SH/Z sibilant cluster",
+            "flag_for_manual_review"
+          ]
+        ]
+      }
+    }
+  ]
+}

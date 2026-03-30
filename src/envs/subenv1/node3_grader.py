@@ -7,9 +7,10 @@ evaluates two upstream agent outputs:
   - ``grade_image_diagnostics``  — Node 1 (Image Diagnostician)
   - ``grade_anomaly_detection``  — Node 2 (Parameter Anomaly Detector)
 
-Only ``grade_anomaly_detection`` is included per the current task scope; the
-Node 1 grader lives alongside it for completeness and is implemented directly
-from the spec.
+The Node 1 and Node 2 graders are both exposed publicly in this module:
+
+    - ``grade_image_diagnostics``
+    - ``grade_anomaly_detection``
 
 Risk calibration uses **ordinal distance**, not binary equality.
 ``failure_mode_prediction`` delegates to ``set_f1`` from
@@ -171,6 +172,42 @@ def grade_anomaly_detection(
     )
 
 
+def grade_image_diagnostics(
+    agent_action: ImageDiagnosticsAction,
+    ground_truth: GroundTruthImageAnnotation,
+) -> float:
+    """Grade the Image Diagnostician agent output (Node 1)."""
+    scores: dict[str, float] = {}
+
+    if agent_action.regime_classification == ground_truth.regime_classification:
+        scores["regime_accuracy"] = 1.0
+    elif agent_action.regime_classification in ground_truth.acceptable_regimes:
+        scores["regime_accuracy"] = 0.7
+    else:
+        scores["regime_accuracy"] = 0.0
+
+    predicted_risks = set(agent_action.identified_risk_factors)
+    true_risks = set(ground_truth.identified_risk_factors)
+    scores["risk_factor_recall"] = (
+        len(predicted_risks & true_risks) / len(true_risks) if true_risks else 1.0
+    )
+
+    valid_mods = set(ground_truth.valid_prompt_modifications)
+    agent_mods = set(agent_action.recommended_prompt_modifications)
+    if agent_mods:
+        scores["prompt_modification_validity"] = (
+            len(agent_mods & valid_mods) / len(agent_mods)
+        )
+    else:
+        scores["prompt_modification_validity"] = 0.0 if valid_mods else 1.0
+
+    return (
+        0.35 * scores["regime_accuracy"]
+        + 0.35 * scores["risk_factor_recall"]
+        + 0.30 * scores["prompt_modification_validity"]
+    )
+
+
 # ---------------------------------------------------------------------------
 # Node 3 — produce ReferenceAuditHandoff (public entry-point)
 # ---------------------------------------------------------------------------
@@ -201,7 +238,7 @@ def produce_reference_audit_handoff(
         A fully populated :class:`ReferenceAuditHandoff`.
     """
     # --- grade both nodes (re-use local graders) ----------------------------
-    node1_score = _grade_image_diagnostics_local(node1_action, img_gt)
+    node1_score = grade_image_diagnostics(node1_action, img_gt)
     node2_score = grade_anomaly_detection(node2_action, param_gt)
     subenv1_score = 0.50 * node1_score + 0.50 * node2_score
 
@@ -240,31 +277,5 @@ def _grade_image_diagnostics_local(
     agent_action: ImageDiagnosticsAction,
     ground_truth: GroundTruthImageAnnotation,
 ) -> float:
-    """Local copy of the Node 1 grader (avoids a circular import with pipeline)."""
-    scores: dict[str, float] = {}
-
-    if agent_action.regime_classification == ground_truth.regime_classification:
-        scores["regime_accuracy"] = 1.0
-    elif agent_action.regime_classification in ground_truth.acceptable_regimes:
-        scores["regime_accuracy"] = 0.7
-    else:
-        scores["regime_accuracy"] = 0.0
-
-    predicted_risks = set(agent_action.identified_risk_factors)
-    true_risks = set(ground_truth.identified_risk_factors)
-    scores["risk_factor_recall"] = (
-        len(predicted_risks & true_risks) / len(true_risks) if true_risks else 1.0
-    )
-
-    valid_mods = set(ground_truth.valid_prompt_modifications)
-    agent_mods = set(agent_action.recommended_prompt_modifications)
-    if agent_mods:
-        scores["prompt_modification_validity"] = len(agent_mods & valid_mods) / len(agent_mods)
-    else:
-        scores["prompt_modification_validity"] = 0.0 if valid_mods else 1.0
-
-    return (
-        0.35 * scores["regime_accuracy"]
-        + 0.35 * scores["risk_factor_recall"]
-        + 0.30 * scores["prompt_modification_validity"]
-    )
+    """Backward-compatible alias for callers using the old private helper name."""
+    return grade_image_diagnostics(agent_action, ground_truth)

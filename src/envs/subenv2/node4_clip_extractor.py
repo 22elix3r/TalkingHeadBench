@@ -423,7 +423,8 @@ def extract_clip_signals(
                 face_mask = np.zeros((h, w), dtype=bool)
                 face_mask[cy - h // 5 : cy + h // 5, cx - w // 5 : cx + w // 5] = True
 
-            face_flows.append(float(mag[face_mask].mean()))
+            face_mean = float(mag[face_mask].mean()) if face_mask.any() else 0.0
+            face_flows.append(face_mean)
             bg_flows.append(float(mag[~face_mask].mean() + 1e-6))
 
         optical_flow_magnitude = float(np.mean(face_flows)) / float(np.mean(bg_flows))

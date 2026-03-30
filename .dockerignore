@@ -1,0 +1,17 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.agent
+docs/
+*.md
+!README.md
+data/
+data/alignment/
+data/clips/
+data/lora_weights/
+data/models/
+data/ohwxperson-checkpoints/
+data/reference_images/

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+import numpy as np
 import torch
 from torch import Tensor
 
@@ -94,3 +95,57 @@ def canonicalize_lora_factors(A: Tensor, B: Tensor) -> CanonicalComponents:
     effective_update = B @ R_a                                              # Step 2: form the effective LoRA update
     U, S, Vt = torch.linalg.svd(effective_update, full_matrices=False)     # Step 3: SVD
     return CanonicalComponents(U=U, S=S, Vt=Vt, Q=Q_a)
+
+
+def layer_entropy_from_singular_values(S: Tensor) -> float:
+    """Return inverted normalized entropy of the singular-value distribution.
+
+    Interprets singular values as an energy distribution across canonical
+    directions and computes:
+
+    1) raw entropy of normalized singular values,
+    2) normalization by log(rank),
+    3) inversion so higher means more anomalous concentration.
+
+    Returns:
+      - 0.0 for uniform singular values (healthy utilization)
+      - 1.0 for extreme concentration into one direction (rank collapse)
+    """
+    from scipy.stats import entropy as scipy_entropy
+
+    s_np = S.detach().cpu().float().numpy()
+    if s_np.size == 0:
+        return 0.0
+
+    s_np = np.clip(s_np, a_min=0.0, a_max=None)
+    total = float(s_np.sum())
+    if total <= 1e-8:
+        return 0.0
+
+    probs = s_np / (total + 1e-8)
+    raw_entropy = float(scipy_entropy(probs))
+    max_entropy = float(np.log(len(probs)))
+    if max_entropy < 1e-8:
+        return 0.0
+
+    normalized = raw_entropy / max_entropy
+    return float(np.clip(1.0 - normalized, 0.0, 1.0))
+
+
+def singular_direction_anomaly_scores(S: Tensor) -> list[float]:
+    """Return per-direction anomaly scores from normalized singular values.
+
+    Uses normalized singular values as concentration scores in [0, 1].
+    Higher values indicate directions that dominate layer energy.
+    """
+    s_np = S.detach().cpu().float().numpy()
+    if s_np.size == 0:
+        return []
+
+    s_np = np.clip(s_np, a_min=0.0, a_max=None)
+    total = float(s_np.sum())
+    if total <= 1e-8:
+        return [0.0 for _ in range(len(s_np))]
+
+    probs = s_np / (total + 1e-8)
+    return [float(v) for v in probs]

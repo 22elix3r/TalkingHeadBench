@@ -1,8 +1,16 @@
-numpy>=1.24.0
-torch>=2.0.0
-pydantic>=2.0.0
-scipy>=1.10.0
-safetensors>=0.3.0
-opencv-python>=4.8.0
-mediapipe>=0.10.0
-pytest>=7.0.0
+# Install core: pip install -r requirements.txt
+# Install full extraction stack: pip install insightface transformers
+
+# Core (required)
+numpy
+torch
+pydantic>=2.0
+scipy
+safetensors
+opencv-python
+mediapipe
+pytest
+
+# Optional: full-fidelity signal extraction
+# pip install insightface          # ArcFace face embeddings (Sub-env 2)
+# pip install transformers         # Tokenizer reconstruction (Sub-env 3)

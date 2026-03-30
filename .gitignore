@@ -1,8 +1,16 @@
-# Python
+# Python cache and bytecode
 __pycache__/
 *.py[cod]
-*.class
-*.so
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python build artifacts
 .Python
 build/
 develop-eggs/
@@ -16,16 +24,19 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+site/
 *.egg-info/
 .installed.cfg
 *.egg
-.pytest_cache/
+
+# Virtual environments
 .venv/
 venv/
 ENV/
 env/
 
-# ML Model Weights
+# ML model weights and checkpoints
 *.safetensors
 *.ckpt
 *.pt
@@ -33,7 +44,7 @@ env/
 *.bin
 *.gguf
 
-# Media Files (Global)
+# Media files (ignore globally)
 *.mp4
 *.wav
 *.mp3
@@ -41,25 +52,55 @@ env/
 *.jpg
 *.jpeg
 
-# Media Exceptions (Allow in assets/ and docs/)
-!assets/**
-!docs/**
+# Media exceptions (keep media inside dedicated assets/docs folders)
+!assets/
+!assets/**/
+!assets/**/*.mp4
+!assets/**/*.wav
+!assets/**/*.mp3
+!assets/**/*.png
+!assets/**/*.jpg
+!assets/**/*.jpeg
 
-# Secrets and Credentials
+!docs/
+!docs/**/
+!docs/**/*.mp4
+!docs/**/*.wav
+!docs/**/*.mp3
+!docs/**/*.png
+!docs/**/*.jpg
+!docs/**/*.jpeg
+
+# Secrets and credentials
 .env
-*key*
-*token*
+.env.*
+*.env
 *secret*
+*token*
+*api_key*
+*apikey*
+*credentials*
+*.pem
+*.key
+*.p12
+*.pfx
 
-# Large Data and Logs
+# Large data directories
 data/
 datasets/
+checkpoints/
+artifacts/
+outputs/
 logs/
 temp/
-_temp/
+tmp/
+cache/
 
-# IDE and System
+# IDE and system files
 .vscode/
 .idea/
 .DS_Store
+Thumbs.db
+
+# Local agent workspace files
 .agent/

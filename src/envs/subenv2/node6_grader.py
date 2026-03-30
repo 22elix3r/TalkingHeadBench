@@ -128,15 +128,18 @@ def grade_clip_disposition(
 
     # ------------------------------------------------------------------
     # 4. Override misuse penalty
-    # Applies ONLY when override_decision == "applied".
+    # Evaluate ONLY when override labels are actually annotated.
     # ------------------------------------------------------------------
-    if agent_action.override_decision == "applied":
+    valid_override_justifications = ground_truth.valid_override_justifications
+    has_override_labels = (
+        isinstance(valid_override_justifications, list)
+        and len(valid_override_justifications) > 0
+    )
+
+    if has_override_labels and agent_action.override_decision == "applied":
         if not agent_action.override_justification:
             score -= 0.10
-        elif (
-            agent_action.override_justification
-            not in ground_truth.valid_override_justifications
-        ):
+        elif agent_action.override_justification not in valid_override_justifications:
             score -= 0.05
         # Valid justification present → no penalty
 
