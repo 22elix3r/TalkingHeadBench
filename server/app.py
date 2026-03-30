@@ -245,8 +245,75 @@ def _patched_openapi() -> dict:
         if isinstance(schema_obj, dict):
             _patch_analyze_ingestion_schema(schema_obj)
 
+    # ---------------------------------------------------------------------------
+    # /ingest-artifacts: the endpoint now takes a raw Request (to filter out the
+    # empty-string placeholders Swagger sends for unfilled file fields), so FastAPI
+    # no longer auto-generates its requestBody.  Inject it manually here.
+    # ---------------------------------------------------------------------------
+    _INGEST_REQUEST_BODY: dict[str, Any] = {
+        "required": True,
+        "content": {
+            "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "reference_image": {
+                            "title": "Reference Image",
+                            "description": "Reference portrait image (jpg / png / webp)",
+                            "anyOf": [
+                                {"type": "string", "format": "binary"},
+                                {"type": "null"},
+                            ],
+                        },
+                        "clips": {
+                            "title": "Clips",
+                            "description": "One or more video clips (.mp4 / .mov / .avi / .mkv / .webm)",
+                            "type": "array",
+                            "items": {"type": "string", "format": "binary"},
+                            "default": [],
+                        },
+                        "lora_weights": {
+                            "title": "LoRA Weights",
+                            "description": "LoRA weight file (.safetensors / .bin / .pt)",
+                            "anyOf": [
+                                {"type": "string", "format": "binary"},
+                                {"type": "null"},
+                            ],
+                        },
+                        "tokenizer_config": {
+                            "title": "Tokenizer Config",
+                            "description": "Tokenizer config JSON file",
+                            "anyOf": [
+                                {"type": "string", "format": "binary"},
+                                {"type": "null"},
+                            ],
+                        },
+                        "prompt": {
+                            "title": "Prompt",
+                            "description": "Text prompt describing the talking-head generation task",
+                            "type": "string",
+                            "default": "",
+                        },
+                        "param_config_json": {
+                            "title": "Param Config JSON",
+                            "description": "Optional JSON string with generation parameter overrides",
+                            "type": "string",
+                            "default": "",
+                        },
+                    },
+                }
+            }
+        },
+    }
+    ingest_post = (
+        schema.get("paths", {}).get("/ingest-artifacts", {}).get("post")
+    )
+    if isinstance(ingest_post, dict):
+        ingest_post["requestBody"] = _INGEST_REQUEST_BODY
+
     app.openapi_schema = schema
     return app.openapi_schema
+
 
 
 app.openapi = _patched_openapi  # type: ignore[method-assign]
