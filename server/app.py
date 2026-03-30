@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import logging
 import sys
-from typing import Any, List, Literal
+from typing import Any, Literal
 from pathlib import Path
 
-from fastapi import File, Form, HTTPException, UploadFile
+from fastapi import File, Form, HTTPException, Request, UploadFile
+from fastapi.openapi.utils import get_openapi
+from fastapi.responses import HTMLResponse
 from openenv.core.env_server.http_server import create_app
 from openenv.core.env_server.types import Action
 from pydantic import BaseModel, Field
@@ -113,52 +115,172 @@ app = create_app(
     env_name="talking_head_bench",
 )
 
-
 # ---------------------------------------------------------------------------
-# OpenAPI schema patch: make `clips` render as file pickers in Swagger UI.
-# FastAPI generates array<string> for list[UploadFile] which is wrong.
+# Custom OpenAPI schema: ensure clips is typed as array-of-binary files and
+# param_config_json has no spurious string default.
 # ---------------------------------------------------------------------------
-_openapi_cache: dict | None = None
 
+def _patch_ingest_artifacts_props(props: dict[str, Any]) -> None:
+    if "clips" in props:
+        props["clips"] = {
+            "title": "Clips",
+            "description": "One or more video clips (.mp4 / .mov / .avi / .mkv / .webm)",
+            "type": "array",
+            "items": {"type": "string", "format": "binary"},
+            "default": [],
+        }
+
+    # Convert OpenAPI 3.1 contentMediaType encoding into Swagger-friendly binary format.
+    for key in ("reference_image", "lora_weights", "tokenizer_config"):
+        field = props.get(key)
+        if not isinstance(field, dict):
+            continue
+        variants = field.get("anyOf")
+        if not isinstance(variants, list):
+            continue
+        for item in variants:
+            if isinstance(item, dict) and item.get("type") == "string":
+                item.pop("contentMediaType", None)
+                item["format"] = "binary"
+
+    if "param_config_json" in props and isinstance(props["param_config_json"], dict):
+        field = props["param_config_json"]
+        field.pop("anyOf", None)
+        field["type"] = "string"
+        field["default"] = ""
+        field["example"] = ""
+        field.pop("nullable", None)
+
+
+def _patch_analyze_ingestion_props(props: dict[str, Any]) -> None:
+    allowed_keys = {"ingestion_id", "model_id", "api_key", "provider"}
+    for key in list(props.keys()):
+        if key not in allowed_keys:
+            props.pop(key, None)
+
+
+def _patch_analyze_ingestion_schema(schema_obj: dict[str, Any]) -> None:
+    props = schema_obj.get("properties")
+    if isinstance(props, dict):
+        _patch_analyze_ingestion_props(props)
+
+    required = schema_obj.get("required")
+    if isinstance(required, list):
+        schema_obj["required"] = [
+            field_name
+            for field_name in required
+            if field_name in {"ingestion_id", "model_id", "api_key", "provider"}
+        ]
 
 def _patched_openapi() -> dict:
-    global _openapi_cache
-    if _openapi_cache is not None:
-        return _openapi_cache
-
-    from fastapi.openapi.utils import get_openapi
+    if app.openapi_schema:
+        return app.openapi_schema
 
     schema = get_openapi(
         title=app.title,
         version=app.version,
-        openapi_version=app.openapi_version,
         description=app.description,
         routes=app.routes,
     )
 
-    # Walk every requestBody and fix the clips field
+    components = schema.get("components", {}).get("schemas", {})
+
     for path_item in schema.get("paths", {}).values():
         for operation in path_item.values():
             if not isinstance(operation, dict):
                 continue
-            try:
-                content = operation["requestBody"]["content"]
-                form_schema = content["multipart/form-data"]["schema"]
-                props = form_schema.get("properties", {})
-                if "clips" in props:
-                    props["clips"] = {
-                        "type": "array",
-                        "items": {"type": "string", "format": "binary"},
-                        "description": "Optional list of dataset clip files (.mp4 / .mov / .avi / .mkv / .webm)",
-                    }
-            except (KeyError, TypeError):
+
+            request_schema = (
+                operation
+                .get("requestBody", {})
+                .get("content", {})
+                .get("multipart/form-data", {})
+                .get("schema", {})
+            )
+            if not isinstance(request_schema, dict):
                 continue
 
-    _openapi_cache = schema
-    return schema
+            props: dict[str, Any] | None = None
+            if isinstance(request_schema.get("properties"), dict):
+                props = request_schema["properties"]
+            elif isinstance(request_schema.get("$ref"), str):
+                ref_name = str(request_schema["$ref"]).rsplit("/", 1)[-1]
+                ref_schema = components.get(ref_name)
+                if isinstance(ref_schema, dict) and isinstance(ref_schema.get("properties"), dict):
+                    props = ref_schema["properties"]
+
+            if props:
+                _patch_ingest_artifacts_props(props)
+
+    # Safety net: patch ingest body component directly.
+    for schema_name, schema_obj in components.items():
+        if "ingest_artifacts" not in schema_name.lower():
+            continue
+        if isinstance(schema_obj, dict) and isinstance(schema_obj.get("properties"), dict):
+            _patch_ingest_artifacts_props(schema_obj["properties"])
+
+    analyze_request_schema = (
+        schema
+        .get("paths", {})
+        .get("/analyze-ingestion", {})
+        .get("post", {})
+        .get("requestBody", {})
+        .get("content", {})
+        .get("application/json", {})
+        .get("schema", {})
+    )
+    if isinstance(analyze_request_schema, dict):
+        if isinstance(analyze_request_schema.get("properties"), dict):
+            _patch_analyze_ingestion_schema(analyze_request_schema)
+        elif isinstance(analyze_request_schema.get("$ref"), str):
+            ref_name = str(analyze_request_schema["$ref"]).rsplit("/", 1)[-1]
+            ref_schema = components.get(ref_name)
+            if isinstance(ref_schema, dict):
+                _patch_analyze_ingestion_schema(ref_schema)
+
+    # Safety net: patch analyze request body component directly.
+    for schema_name, schema_obj in components.items():
+        if "analyzeingestionrequest" not in schema_name.lower():
+            continue
+        if isinstance(schema_obj, dict):
+            _patch_analyze_ingestion_schema(schema_obj)
+
+    app.openapi_schema = schema
+    return app.openapi_schema
 
 
 app.openapi = _patched_openapi  # type: ignore[method-assign]
+
+
+# Serve Scalar as the API reference UI (replaces the default Swagger UI).
+_SCALAR_HTML = """
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TalkingHeadBench API Reference</title>
+    <style>body { margin: 0; }</style>
+  </head>
+  <body>
+    <script
+      id="api-reference"
+      data-url="/openapi.json"
+      data-configuration='{
+        "theme": "purple",
+        "layout": "modern",
+        "defaultHttpClient": {"targetKey": "python", "clientKey": "requests"}
+      }'
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+  </body>
+</html>
+"""
+
+
+@app.get("/docs", include_in_schema=False)
+async def scalar_ui(request: Request) -> HTMLResponse:  # noqa: ARG001
+    return HTMLResponse(_SCALAR_HTML)
 
 
 @app.get("/healthz", response_model=HealthResponse)
@@ -168,15 +290,39 @@ async def health() -> HealthResponse:
 
 
 @app.post("/ingest-artifacts", response_model=IngestArtifactsResponse)
-async def ingest_artifacts(
-    reference_image: UploadFile | None = File(default=None, description="Optional reference image file."),
-    clips: List[UploadFile] = File(default=[], description="Optional list of dataset clip files (.mp4 / .mov / .avi / .mkv / .webm)"),
-    lora_weights: UploadFile | None = File(default=None, description="Optional LoRA weights file (.safetensors)."),
-    tokenizer_config: UploadFile | None = File(default=None, description="Optional tokenizer config (.json) for phoneme mapping."),
-    prompt: str = Form(default="", description="Text prompt used for generation."),
-    param_config_json: str | None = Form(default=None, description='Generation params JSON, e.g. {"cfg": 7.5, "eta": 0.1}'),
-) -> IngestArtifactsResponse:
+async def ingest_artifacts(request: Request) -> IngestArtifactsResponse:
     """Upload artifacts, extract signals, and return a reusable ingestion id."""
+
+    # Parse the raw multipart form ourselves so we can filter out the empty-string
+    # placeholders that Swagger UI sends for optional file fields that aren't filled in.
+    # FastAPI's automatic File() injection fails with "Expected UploadFile, received str"
+    # whenever Swagger submits an empty string for clips / reference_image / etc.
+    try:
+        form = await request.form()
+    except Exception as exc:  # noqa: BLE001
+        _raise_http_error(
+            status_code=400,
+            code="invalid_multipart_form",
+            message=f"Could not parse multipart form: {exc}",
+        )
+
+    def _as_upload(value: object) -> UploadFile | None:
+        """Return value only if it is a real uploaded file (non-empty filename)."""
+        if isinstance(value, UploadFile) and value.filename:
+            return value
+        return None
+
+    reference_image: UploadFile | None = _as_upload(form.get("reference_image"))
+    lora_weights: UploadFile | None = _as_upload(form.get("lora_weights"))
+    tokenizer_config: UploadFile | None = _as_upload(form.get("tokenizer_config"))
+
+    # clips may be sent as a single value or a list; filter out empty-string entries.
+    raw_clips = form.getlist("clips")
+    clips: list[UploadFile] = [f for f in raw_clips if isinstance(f, UploadFile) and f.filename]
+
+    prompt: str = str(form.get("prompt") or "")
+    param_config_json: str = str(form.get("param_config_json") or "")
+
     try:
         bundle = await ingest_artifacts_to_bundle(
             reference_image=reference_image,
@@ -219,6 +365,7 @@ async def ingest_artifacts(
             description="Pass this payload to env.reset(...) over OpenEnv WebSocket.",
         ),
     )
+
 
 
 @app.get("/ingestions", response_model=ListIngestionsResponse)
