@@ -260,10 +260,8 @@ def _patched_openapi() -> dict:
                         "reference_image": {
                             "title": "Reference Image",
                             "description": "Reference portrait image (jpg / png / webp)",
-                            "anyOf": [
-                                {"type": "string", "format": "binary"},
-                                {"type": "null"},
-                            ],
+                            "type": "string",
+                            "format": "binary",
                         },
                         "clips": {
                             "title": "Clips",
@@ -275,18 +273,14 @@ def _patched_openapi() -> dict:
                         "lora_weights": {
                             "title": "LoRA Weights",
                             "description": "LoRA weight file (.safetensors / .bin / .pt)",
-                            "anyOf": [
-                                {"type": "string", "format": "binary"},
-                                {"type": "null"},
-                            ],
+                            "type": "string",
+                            "format": "binary",
                         },
                         "tokenizer_config": {
                             "title": "Tokenizer Config",
                             "description": "Tokenizer config JSON file",
-                            "anyOf": [
-                                {"type": "string", "format": "binary"},
-                                {"type": "null"},
-                            ],
+                            "type": "string",
+                            "format": "binary",
                         },
                         "prompt": {
                             "title": "Prompt",
@@ -374,18 +368,27 @@ async def ingest_artifacts(request: Request) -> IngestArtifactsResponse:
         )
 
     def _as_upload(value: object) -> UploadFile | None:
-        """Return value only if it is a real uploaded file (non-empty filename)."""
-        if isinstance(value, UploadFile) and value.filename:
-            return value
-        return None
+        """Return value only if it is a real UploadFile.
+
+        Starlette only produces UploadFile objects for multipart parts that
+        carry a ``filename`` field in their Content-Disposition header, which
+        is precisely what a browser/Scalar/Swagger sends when a user picks a
+        real file.  Unfilled optional file fields are sent as plain strings
+        (even empty strings like ``""``) — those will never be UploadFile
+        instances, so the isinstance check alone is a safe, complete filter.
+        Adding ``and value.filename`` would incorrectly discard uploads whose
+        Content-Disposition says ``filename=""`` (falsy but still valid).
+        """
+        return value if isinstance(value, UploadFile) else None
 
     reference_image: UploadFile | None = _as_upload(form.get("reference_image"))
     lora_weights: UploadFile | None = _as_upload(form.get("lora_weights"))
     tokenizer_config: UploadFile | None = _as_upload(form.get("tokenizer_config"))
 
-    # clips may be sent as a single value or a list; filter out empty-string entries.
+    # clips may arrive as a single value or repeated field; filter out any
+    # plain-string placeholders Swagger/Scalar sends for unfilled array items.
     raw_clips = form.getlist("clips")
-    clips: list[UploadFile] = [f for f in raw_clips if isinstance(f, UploadFile) and f.filename]
+    clips: list[UploadFile] = [f for f in raw_clips if isinstance(f, UploadFile)]
 
     prompt: str = str(form.get("prompt") or "")
     param_config_json: str = str(form.get("param_config_json") or "")
