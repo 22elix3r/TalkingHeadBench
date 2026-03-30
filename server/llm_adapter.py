@@ -168,12 +168,8 @@ def _resolve_model_id(provider: Provider, model_id: str | None) -> str:
         env_model = os.getenv("THB_HF_MODEL", "").strip()
         if env_model:
             return env_model
-        raise LLMAdapterError(
-            code="missing_model_id",
-            message="Provide model_id for huggingface provider.",
-            status_code=400,
-            retryable=False,
-        )
+        # Default to a well-supported chat model via the HF router.
+        return "Qwen/Qwen2.5-72B-Instruct"
     return os.getenv("THB_LOCAL_MODEL", "llama3.1:8b-instruct-q4_K_M")
 
 
@@ -454,9 +450,15 @@ def _call_huggingface(
     timeout_s: float,
     base_url: str | None,
 ) -> str:
-    # Use HuggingFace Inference API v2 (OpenAI-compatible chat completions).
-    # The legacy /models/{model_id} pipeline endpoint is deprecated for modern models.
+    # Use HuggingFace Inference Router (router.huggingface.co) — OpenAI-compatible.
+    # The old api-inference.huggingface.co domain returned HTTP 410 Gone.
     token = (api_key or "").strip()
+
+    # Auto-append :fastest routing suffix if the model_id has no provider hint.
+    # This lets the HF router automatically select the best available backend.
+    routed_model = model_id
+    if ":" not in model_id.split("/")[-1]:
+        routed_model = f"{model_id}:fastest"
 
     if base_url:
         cleaned = base_url.rstrip("/")
@@ -467,12 +469,14 @@ def _call_huggingface(
             url = f"{cleaned}/chat/completions"
         else:
             url = f"{cleaned}/v1/chat/completions"
+        # Don't append :fastest for custom base URLs.
+        routed_model = model_id
     else:
-        # New HuggingFace Serverless Inference API v2 — OpenAI-compatible.
-        url = f"https://api-inference.huggingface.co/models/{model_id}/v1/chat/completions"
+        # New HuggingFace Inference Router — OpenAI-compatible endpoint.
+        url = "https://router.huggingface.co/v1/chat/completions"
 
     payload = {
-        "model": model_id,
+        "model": routed_model,
         "messages": [
             {"role": "system", "content": _SYSTEM_PROMPT},
             {"role": "user", "content": prompt},
