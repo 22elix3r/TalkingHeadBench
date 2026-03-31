@@ -1,6 +1,13 @@
+# Validation (2026-03-31): [OK] talkingheadbench: Ready for multi-mode deployment
 spec_version: 1
 name: talking_head_bench
 type: space
 runtime: fastapi
 app: server.app:app
 port: 8000
+env_vars:
+  - API_BASE_URL
+  - MODEL_NAME
+  - HF_TOKEN
+  - THB_ALLOW_CUSTOM_BASE_URLS
+  - THB_ALLOWED_BASE_URL_PREFIXES

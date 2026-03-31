@@ -1,42 +1,57 @@
-# TalkingHeadBench 🎭
+---
+title: TalkingHeadBench
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 8000
+pinned: false
+license: mit
+short_description: Talking-head LoRA diagnostic reasoning benchmark
+tags:
+    - openenv
+    - reinforcement-learning
+    - benchmark
+---
+
+# TalkingHeadBench
 
 > **An open-source diagnostic reasoning benchmark for evaluating AI agents on talking-head video LoRA pipelines.**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![OpenEnv](https://img.shields.io/badge/OpenEnv-v1.0-green.svg)](https://github.com/meta-pytorch/OpenEnv)
-[![HuggingFace](https://img.shields.io/badge/🤗-LTX--2.3--22b--AV--LoRA-orange)](https://huggingface.co/elix3r/LTX-2.3-22b-AV-LoRA-talking-head)
+[![Reference Model](https://img.shields.io/badge/Reference_Model-LTX_2.3_22b_AV_LoRA-orange)](https://huggingface.co/elix3r/LTX-2.3-22b-AV-LoRA-talking-head)
 
 ---
 
 ## Overview
 
-**TalkingHeadBench** challenges AI agents to act as **senior engineers** who audit and optimize talking-head video LoRA pipelines — identifying failure modes in reference images, training datasets, and final model weights *before a single frame is ever rendered*.
+**TalkingHeadBench** challenges AI agents to act as **senior engineers** who audit and optimize talking-head video LoRA pipelines, identifying failure modes in reference images, training datasets, and final model weights *before a single frame is ever rendered*.
 
 The benchmark focuses on **diagnostic reasoning**, not generative performance. All signals are pre-extracted (face occupancy ratios, yaw/pitch degrees, landmark stability scores, canonical SVD weight components), making episodes run in **seconds** without GPU inference.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 The pipeline is divided into **3 coupled sub-environments** spanning **9 deterministic nodes**:
 
 ```
 Episode
-├── Sub-env 1 — Reference Image & Prompt Audit        (weight: 25%)
-│   ├── Node 1 — Image Diagnostician
-│   ├── Node 2 — Parameter Anomaly Detector
-│   └── Node 3 — Grader
+├── Sub-env 1: Reference Image and Prompt Audit        (weight: 25%)
+│   ├── Node 1: Image Diagnostician
+│   ├── Node 2: Parameter Anomaly Detector
+│   └── Node 3: Grader
 │
-├── Sub-env 2 — Dataset Clip Health Audit             (weight: 35%)
-│   ├── Node 4 — Clip Signal Extractor
-│   ├── Node 5 — Disposition Classifier
-│   └── Node 6 — Grader
+├── Sub-env 2: Dataset Clip Health Audit              (weight: 35%)
+│   ├── Node 4: Clip Signal Extractor
+│   ├── Node 5: Disposition Classifier
+│   └── Node 6: Grader
 │
-└── Sub-env 3 — Trained LoRA Weight Behavioral Audit  (weight: 40%)
-    ├── Node 7 — Weight Signal Extractor
-    ├── Node 8 — Phoneme Risk Assessor
-    └── Node 9 — Behavioral Audit Grader
+└── Sub-env 3: Trained LoRA Weight Behavioral Audit   (weight: 40%)
+    ├── Node 7: Weight Signal Extractor
+    ├── Node 8: Phoneme Risk Assessor
+    └── Node 9: Behavioral Audit Grader
 ```
 
 ### Non-Linear Coupling
@@ -53,7 +68,7 @@ See [`REWARD_LOGIC.md`](REWARD_LOGIC.md) for per-dimension scoring breakdowns.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 TalkingHeadBench/
@@ -136,7 +151,7 @@ TalkingHeadBench/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -205,7 +220,7 @@ python -m src.evaluate --test-set tests/test_set/ --verbose
 
 ---
 
-## 🌐 OpenEnv Server
+## OpenEnv Server
 
 TalkingHeadBench is packaged as an [OpenEnv](https://github.com/meta-pytorch/OpenEnv)-compliant environment with a Gymnasium-style `reset` / `step` API served over FastAPI.
 
@@ -222,6 +237,21 @@ uvicorn server.app:app --host 0.0.0.0 --port 8000
 docker build -t talking-head-bench -f server/Dockerfile .
 docker run -p 8000:8000 talking-head-bench
 ```
+
+### Hugging Face Space Config (Public Deployment)
+
+When this server is deployed publicly, keep custom provider URLs disabled unless
+you explicitly need them.
+
+Set these Space variables:
+
+- `THB_ALLOW_CUSTOM_BASE_URLS=0` (recommended default for public endpoints)
+- `THB_ALLOWED_BASE_URL_PREFIXES=https://api-inference.huggingface.co`
+
+If you need to allow custom provider endpoints, set
+`THB_ALLOW_CUSTOM_BASE_URLS=1` and keep
+`THB_ALLOWED_BASE_URL_PREFIXES` to a strict comma-separated allowlist. Private,
+loopback, and link-local hosts are blocked.
 
 ### Client Usage
 
@@ -240,14 +270,14 @@ with TalkingHeadBenchEnv(base_url="http://localhost:8000").sync() as env:
 
 | Step | Transition | Agent Receives | Agent Returns |
 |------|-----------|----------------|---------------|
-| `reset` | — | `ImageDiagnosticsObservation` | — |
+| `reset` | N/A | `ImageDiagnosticsObservation` | N/A |
 | `step 1` | Node 1 → Node 2 | `ParamAnomalyObservation` | `ImageDiagnosticsAction` |
 | `step 2` | Node 4 → Node 6 | `ClipDispositionObservation` | `ParamAnomalyAction` |
 | `step 3` | Node 7 → Node 9 | done + `final_score` | `PhonemeRiskAction` |
 
 ---
 
-## 🧪 Test Suite
+## Test Suite
 
 ```bash
 # Run all tests
@@ -281,9 +311,9 @@ pytest --cov=src --cov-report=term-missing
 
 ---
 
-## 📊 Scoring Reference
+## Scoring Reference
 
-### Sub-env 1 — Reference Image & Prompt Audit (25%)
+### Sub-env 1: Reference Image and Prompt Audit (25%)
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -291,7 +321,7 @@ pytest --cov=src --cov-report=term-missing
 | Risk Factor Recall | 0.35 | Set intersection recall |
 | Prompt Modification Validity | 0.30 | Precision against curated valid set |
 
-### Sub-env 2 — Dataset Clip Health Audit (35%)
+### Sub-env 2: Dataset Clip Health Audit (35%)
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -300,7 +330,7 @@ pytest --cov=src --cov-report=term-missing
 | Dataset Impact Reasoning | 0.20 | Keyword element matching |
 | Override Misuse Penalty | −0.10 | Unjustified override → penalty |
 
-### Sub-env 3 — LoRA Weight Behavioral Audit (40%)
+### Sub-env 3: LoRA Weight Behavioral Audit (40%)
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -312,11 +342,11 @@ pytest --cov=src --cov-report=term-missing
 
 ---
 
-## 🤗 Reference Model
+## Reference Model
 
 This benchmark is designed to evaluate agents working with:
 
-🔗 **[elix3r/LTX-2.3-22b-AV-LoRA-talking-head](https://huggingface.co/elix3r/LTX-2.3-22b-AV-LoRA-talking-head)**
+**[elix3r/LTX-2.3-22b-AV-LoRA-talking-head](https://huggingface.co/elix3r/LTX-2.3-22b-AV-LoRA-talking-head)**
 
 ---
 
@@ -325,14 +355,34 @@ This benchmark is designed to evaluate agents working with:
 | Property | Description |
 |----------|-------------|
 | **No live generation** | All signals are pre-extracted; no GPU inference required during evaluation |
-| **Deterministic** | All graders are rule-based — no LLM judge, fully reproducible |
+| **Deterministic** | All graders are rule-based, with no LLM judge, fully reproducible |
 | **Partial credit** | Borderline answers receive scaled scores, not binary pass/fail |
 | **Cascading difficulty** | Sub-env 1 risk profile influences Sub-env 2 context |
 | **Fast episodes** | Full evaluation completes in seconds |
 
 ---
 
-## 📖 Documentation
+## Research Foundation
+
+TalkingHeadBench's diagnostic nodes are grounded in peer-reviewed research on
+LoRA failure modes, attention interference, and weight-space analysis:
+
+| Research | Application in TalkingHeadBench |
+|----------|-------------------------------|
+| **TARA** (Token-Aware LoRA Attention) | Node 1/2: Attention bleed from low face occupancy; token filtering informs risk factor detection |
+| **W2T** (Weights to Tokens) | Node 7: QR->SVD canonical decomposition resolves factorization ambiguity before any weight statistics are computed |
+| **EditYourself** | Node 1: Reference token coverage degrades at lateral angles - informs yaw-based regime classification |
+| **MoFE** (Mixture of Facial Experts) | Node 2: Angle-dependent identity drift thresholds; directional fix vocabulary |
+| **VASA / EMO / Hallo** | Node 4/5: Talking-head temporal stability expectations; lip-sync quality baselines |
+| **ALTER** | Node 8: Phoneme->behavior association patterns; expression trigger taxonomy |
+
+The cascading-failure coupling design (Sub-env 1 risk profile -> Sub-env 2
+difficulty) mirrors real-world consequences: a poor reference image audit leads
+to harder dataset decisions, which in turn produces noisier trained weights.
+
+---
+
+## Documentation
 
 | Document | Description |
 |----------|-------------|
@@ -359,4 +409,4 @@ This benchmark is designed to evaluate agents working with:
 
 ## License
 
-Licensed under the **MIT License** — see [`LICENSE`](LICENSE) for details.
+Licensed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
