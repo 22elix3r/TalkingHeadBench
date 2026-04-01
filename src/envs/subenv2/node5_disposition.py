@@ -2,7 +2,8 @@
 Node 5: Clip Disposition Recommender.
 
 Deterministic heuristic to recommend accept/reject/fix/defer for a video clip.
-Based on the spec in references/envs.md and specific requested logic.
+This module is standalone to Sub-env 2 and only consumes clip evidence plus
+dataset context.
 """
 
 from src.schemas.subenv2 import (

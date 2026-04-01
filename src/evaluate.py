@@ -462,8 +462,6 @@ def _run_subenv2(obs_dict: dict, gt_dict: dict, case_id: str):
         phoneme_gap_severity={},
         pose_gap_severity={},
         budget_remaining=10,
-        reference_risk_profile="medium",
-        estimated_drift_risk=0.3,
         marginal_training_damage=0.2,
         marginal_coverage_gain=0.5,
     )

@@ -145,10 +145,11 @@ class ParamAnomalyAction(BaseModel):
 class ReferenceAuditHandoff(BaseModel):
     """Grader output from Node 3: Reference Audit Grader.
 
-    Carries the Sub-env 1 composite score and a risk profile that acts as the
-    hard coupling mechanism into Sub-env 2.  A degraded risk profile causes
-    Sub-env 2 to receive harder clips, mirroring real-world consequences of a
-    poor reference image audit.
+    Carries Sub-env 1 composite scoring and calibration metadata for internal
+    Sub-env 1 bookkeeping and diagnostics.
+
+    Note: the additional risk/context fields remain for compatibility but are
+    not used to drive downstream Sub-env 2 execution.
     """
 
     image_usability_score: float

@@ -541,6 +541,14 @@ pipeline
   ↓
 evaluate
 
+Sub-environment coupling graph:
+
+Sub-env 1 (image + prompt audit)
+  └─ no outgoing sub-env dependency
+
+Sub-env 2 (clip audit)
+  └─→ Sub-env 3 (optional anomalous-phoneme context)
+
 Unit tests target sub-components (utils, schemas, individual nodes).
 Smoke tests target graders and pipelines end-to-end.
 

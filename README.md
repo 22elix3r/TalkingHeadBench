@@ -34,37 +34,42 @@ The benchmark focuses on **diagnostic reasoning**, not generative performance. A
 
 ## Architecture
 
-The pipeline is divided into **3 coupled sub-environments** spanning **9 deterministic nodes**:
+The benchmark is organized into **3 audit sub-environments** spanning
+**9 deterministic nodes**, with mode-based execution:
 
 ```
-Episode
-├── Sub-env 1: Reference Image and Prompt Audit        (weight: 25%)
+Audit Tasks
+├── Sub-env 1: Reference Image and Prompt Audit
 │   ├── Node 1: Image Diagnostician
 │   ├── Node 2: Parameter Anomaly Detector
 │   └── Node 3: Grader
 │
-├── Sub-env 2: Dataset Clip Health Audit              (weight: 35%)
+├── Sub-env 2: Dataset Clip Health Audit
 │   ├── Node 4: Clip Signal Extractor
 │   ├── Node 5: Disposition Classifier
 │   └── Node 6: Grader
 │
-└── Sub-env 3: Trained LoRA Weight Behavioral Audit   (weight: 40%)
+└── Sub-env 3: Trained LoRA Weight Behavioral Audit
     ├── Node 7: Weight Signal Extractor
     ├── Node 8: Phoneme Risk Assessor
     └── Node 9: Behavioral Audit Grader
 ```
 
-### Non-Linear Coupling
+### Coupling Model
 
-Sub-environments are **hard-coupled**: a poor audit in Sub-env 1 (e.g., missing a lateral pose risk) causes Sub-env 2 to receive harder dataset clips with deeper identity drift, mirroring real-world cascading failures.
+- Sub-env 1 is standalone (no downstream dependency).
+- Sub-env 2 can optionally feed suspected anomalous phonemes into Sub-env 3.
 
-### Final Reward Formula
+### Episode Modes
 
-```
-final_score = 0.25 × subenv1 + 0.35 × subenv2 + 0.40 × subenv3
-```
+| Mode | Flow | Reward |
+|------|------|--------|
+| `image` | Node 1 → Node 2 → done | `subenv1_score` |
+| `clips` | Node 5 → done | `subenv2_score` |
+| `weights` | Node 8 → done | `subenv3_score` |
+| `clips_and_weights` | Node 5 → Node 8 → done | blend of `subenv2_score` and `subenv3_score` |
 
-See [`REWARD_LOGIC.md`](REWARD_LOGIC.md) for per-dimension scoring breakdowns.
+See [`REWARD_LOGIC.md`](REWARD_LOGIC.md) for grader-dimension scoring breakdowns.
 
 ---
 
@@ -259,21 +264,29 @@ loopback, and link-local hosts are blocked.
 from client import TalkingHeadBenchEnv
 
 with TalkingHeadBenchEnv(base_url="http://localhost:8000").sync() as env:
-    obs = env.reset()           # Receives ImageDiagnosticsObservation
-    obs = env.step(action_1)    # Sub-env 1 decision → receives ParamAnomalyObservation
-    obs = env.step(action_2)    # Sub-env 2 decision → receives WeightSignalObservation
-    obs = env.step(action_3)    # Sub-env 3 decision → episode done
-    print(obs.reward)           # Final weighted score
+    # Image audit episode (standalone)
+    obs = env.reset(mode="image")
+    obs = env.step(action_1)    # ImageDiagnosticsAction -> ParamAnomalyObservation
+    obs = env.step(action_2)    # ParamAnomalyAction -> done
+    print(obs.reward)           # Sub-env 1 score
+
+    # Clip audit episode (standalone)
+    obs = env.reset(mode="clips")
+    obs = env.step(action_clip) # ClipDispositionAction -> done
+
+    # Weight audit episode (standalone)
+    obs = env.reset(mode="weights")
+    obs = env.step(action_w)    # PhonemeRiskAction -> done
 ```
 
 ### Episode Flow
 
-| Step | Transition | Agent Receives | Agent Returns |
-|------|-----------|----------------|---------------|
-| `reset` | N/A | `ImageDiagnosticsObservation` | N/A |
-| `step 1` | Node 1 → Node 2 | `ParamAnomalyObservation` | `ImageDiagnosticsAction` |
-| `step 2` | Node 4 → Node 6 | `ClipDispositionObservation` | `ParamAnomalyAction` |
-| `step 3` | Node 7 → Node 9 | done + `final_score` | `PhonemeRiskAction` |
+| Mode | Reset Output | Step 1 | Step 2 |
+|------|--------------|--------|--------|
+| `image` | `ImageDiagnosticsObservation` | `ParamAnomalyObservation` | done (`subenv1_score`) |
+| `clips` | `ClipDispositionObservation` | done (`subenv2_score`) | N/A |
+| `weights` | `PhonemeRiskObservation` | done (`subenv3_score`) | N/A |
+| `clips_and_weights` | `ClipDispositionObservation` | `PhonemeRiskObservation` | done (subenv2/subenv3 blend) |
 
 ---
 
@@ -313,7 +326,7 @@ pytest --cov=src --cov-report=term-missing
 
 ## Scoring Reference
 
-### Sub-env 1: Reference Image and Prompt Audit (25%)
+### Sub-env 1: Reference Image and Prompt Audit
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -321,7 +334,7 @@ pytest --cov=src --cov-report=term-missing
 | Risk Factor Recall | 0.35 | Set intersection recall |
 | Prompt Modification Validity | 0.30 | Precision against curated valid set |
 
-### Sub-env 2: Dataset Clip Health Audit (35%)
+### Sub-env 2: Dataset Clip Health Audit
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -330,7 +343,7 @@ pytest --cov=src --cov-report=term-missing
 | Dataset Impact Reasoning | 0.20 | Keyword element matching |
 | Override Misuse Penalty | −0.10 | Unjustified override → penalty |
 
-### Sub-env 3: LoRA Weight Behavioral Audit (40%)
+### Sub-env 3: LoRA Weight Behavioral Audit
 
 | Dimension | Weight | Method |
 |-----------|--------|--------|
@@ -357,7 +370,7 @@ This benchmark is designed to evaluate agents working with:
 | **No live generation** | All signals are pre-extracted; no GPU inference required during evaluation |
 | **Deterministic** | All graders are rule-based, with no LLM judge, fully reproducible |
 | **Partial credit** | Borderline answers receive scaled scores, not binary pass/fail |
-| **Cascading difficulty** | Sub-env 1 risk profile influences Sub-env 2 context |
+| **Mode-based tasks** | Image, clip, and weight audits run independently; clip→weight coupling is optional |
 | **Fast episodes** | Full evaluation completes in seconds |
 
 ---
@@ -376,9 +389,9 @@ LoRA failure modes, attention interference, and weight-space analysis:
 | **VASA / EMO / Hallo** | Node 4/5: Talking-head temporal stability expectations; lip-sync quality baselines |
 | **ALTER** | Node 8: Phoneme->behavior association patterns; expression trigger taxonomy |
 
-The cascading-failure coupling design (Sub-env 1 risk profile -> Sub-env 2
-difficulty) mirrors real-world consequences: a poor reference image audit leads
-to harder dataset decisions, which in turn produces noisier trained weights.
+The benchmark now treats image, clip, and weight audits as independent tasks,
+with optional clip-to-weight context transfer when running a combined
+clips-and-weights episode.
 
 ---
 

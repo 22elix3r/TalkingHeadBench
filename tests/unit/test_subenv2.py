@@ -31,8 +31,6 @@ _SHARED_OBS_KWARGS = dict(
     phoneme_gap_severity={"ZH": 2, "TH": 1},
     pose_gap_severity={},
     budget_remaining=10,
-    reference_risk_profile="medium",
-    estimated_drift_risk=0.4,
     marginal_training_damage=0.2,
     marginal_coverage_gain=0.5,
 )
@@ -150,6 +148,22 @@ def _minimal_gt(
 
 class TestNode5Disposition:
     """Tests for recommend_clip_disposition()."""
+
+    def test_standalone_clip_observation_without_subenv1_fields(self, dossier_a):
+        """Standalone Sub-env 2 observation should produce a valid disposition action."""
+        obs = ClipDispositionObservation(
+            evidence_dossier=dossier_a,
+            minimum_clips_needed=24,
+            phoneme_gap_severity={"ZH": 1},
+            pose_gap_severity={"non_frontal": 1},
+            budget_remaining=12,
+            marginal_training_damage=0.1,
+            marginal_coverage_gain=0.6,
+        )
+
+        action = recommend_clip_disposition(obs)
+        assert action.disposition in {"accept", "reject", "fix", "defer"}
+        assert 0.0 <= action.confidence <= 1.0
 
     def test_disposition_a_accept(self, dossier_a):
         """Clean clip must be accepted."""

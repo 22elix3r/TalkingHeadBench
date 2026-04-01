@@ -703,8 +703,6 @@ def make_disposition_observation(
         phoneme_gap_severity=phoneme_gap_severity,
         pose_gap_severity=accumulated_pose_dist,
         budget_remaining=max(total_clips - clip_index - 1, 0),
-        reference_risk_profile="medium",
-        estimated_drift_risk=0.0,
         marginal_training_damage=0.0,
         marginal_coverage_gain=float(dossier.unique_phoneme_value),
     )

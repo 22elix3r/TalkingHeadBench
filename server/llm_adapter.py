@@ -11,11 +11,49 @@ from typing import Any, Literal
 from urllib.parse import urlparse
 
 Provider = Literal["openai", "anthropic", "huggingface", "local"]
+TaskTier = Literal[
+    "image_audit",
+    "clip_audit",
+    "weight_audit",
+    "easy",
+    "medium",
+    "hard",
+]
 
 _SYSTEM_PROMPT = (
-    "You are a TalkingHeadBench diagnostic assistant. "
-    "You receive only pre-extracted signals from a reference image, dataset clips, and LoRA weights. "
-    "Do not invent generation outputs. Keep recommendations directional and evidence-backed."
+    "You are a TalkingHeadBench diagnostic assistant.\n"
+    "You receive only pre-extracted signals from a reference image, dataset clips, and LoRA weights.\n\n"
+    "STRICT RULES - violations will be rejected:\n"
+    "1. NEVER mention specific numeric values for any parameter (cfg, eta, denoise_alt, "
+    "lora_rank, or any other). Parameter recommendations must be directional only: "
+    "increase / decrease / enable / disable / reconsider.\n"
+    "2. NEVER invent generation outputs or hallucinate signal values not present in the digest.\n"
+    "3. Every risk and recommendation MUST cite the exact signal field name as evidence.\n"
+    "4. FALLBACK FIELDS - do NOT interpret these as real measurements. Treat them as \"no data\":\n"
+    "   - Any field in image_summary when face_occupancy_ratio = 0.35 exactly "
+    "(MediaPipe fallback default).\n"
+    "   - lip_sync_confidence when clip_extractor_fallback_count > 0 "
+    "(hardcoded floor, not a real measurement).\n"
+    "   - identity_anchoring_strength when prompt is empty or blank "
+    "(formula collapses to floor value with no prompt tokens).\n"
+    "5. DRIFT SEVERITY - classify identity drift using these exact thresholds before "
+    "calling it a risk:\n"
+    "   < 0.05  -> none (not a risk)\n"
+    "   < 0.12  -> minor\n"
+    "   < 0.22  -> moderate\n"
+    "   >= 0.22 -> severe\n"
+    "   Do not describe drift as high, elevated, or unstable unless severity is "
+    "moderate or severe.\n"
+    "6. HIGH RISK CLIP REASON - a clip appears in high_risk_clip_ids if ANY of these "
+    "conditions trigger: drift >= 0.35, blur_score <= 0.30, or lip_sync_confidence "
+    "<= 0.35. Always identify which condition triggered it. Do not attribute the "
+    "flag to a condition that did not trigger.\n"
+    "7. If an artifact was not uploaded (weight_summary.available = false, "
+    "image_summary all zeros), state \"not uploaded - no data\" and skip "
+    "interpretation.\n"
+    "8. All fix recommendations follow this exact pattern:\n"
+    "   \"<signal field name> = <qualitative severity> -> <directional action> "
+    "<parameter name>\""
 )
 
 
@@ -47,6 +85,7 @@ def analyze_ingested_bundle(
     max_tokens: int,
     temperature: float,
     timeout_s: float,
+    task_tier: TaskTier = "weight_audit",
 ) -> dict[str, Any]:
     """Generate a one-shot natural-language report from an ingested signal bundle."""
     if not isinstance(bundle, dict):
@@ -64,7 +103,7 @@ def analyze_ingested_bundle(
         base_url=base_url,
     )
     signal_digest = _build_signal_digest(bundle)
-    prompt = _build_prompt(signal_digest)
+    prompt = _build_prompt(signal_digest, task_tier=task_tier)
 
     if resolved_provider == "openai":
         report = _call_openai(
@@ -310,11 +349,20 @@ def _build_signal_digest(bundle: dict[str, Any]) -> dict[str, Any]:
     high_entropy_positions = _as_list(weight_obs.get("high_entropy_token_positions"))
     token_map = weight_obs.get("token_position_to_phoneme")
 
-    return {
+    digest: dict[str, Any] = {
         "case_id": bundle.get("case_id"),
         "prompt": str(bundle.get("prompt", "")),
         "param_config": _as_dict(bundle.get("param_config")),
-        "image_summary": {
+        "ingestion_metadata": {
+            "created_at_unix": metadata.get("created_at_unix"),
+            "clip_extractor_fallback_count": extractor_metadata.get(
+                "clip_extractor_fallback_count"
+            ),
+        },
+    }
+
+    if image_obs:
+        digest["image_summary"] = {
             "face_occupancy_ratio": _as_float(image_obs.get("face_occupancy_ratio")),
             "estimated_sharpness": _as_float(image_obs.get("estimated_sharpness")),
             "lighting_uniformity_score": _as_float(image_obs.get("lighting_uniformity_score")),
@@ -325,16 +373,20 @@ def _build_signal_digest(bundle: dict[str, Any]) -> dict[str, Any]:
             "identity_anchoring_strength": _as_float(
                 image_obs.get("identity_anchoring_strength")
             ),
-        },
-        "clip_summary": {
+        }
+
+    if clip_obs:
+        digest["clip_summary"] = {
             "clip_count": len(clip_obs),
             "high_risk_clip_ids": high_risk_clip_ids,
             "mean_identity_drift": _safe_mean(drifts),
             "mean_blur_score": _safe_mean(blurs),
             "mean_lip_sync_confidence": _safe_mean(lips),
-        },
-        "weight_summary": {
-            "available": bool(weight_obs),
+        }
+
+    if weight_obs:
+        digest["weight_summary"] = {
+            "available": True,
             "weight_file_id": str(weight_obs.get("weight_file_id", "")),
             "lora_rank": _as_int(weight_obs.get("lora_rank")),
             "target_module_count": len(_as_list(weight_obs.get("target_modules"))),
@@ -346,24 +398,105 @@ def _build_signal_digest(bundle: dict[str, Any]) -> dict[str, Any]:
                 token_map,
             ),
             "overfitting_signature": _as_float(weight_obs.get("overfitting_signature")),
-        },
-        "ingestion_metadata": {
-            "created_at_unix": metadata.get("created_at_unix"),
-            "clip_extractor_fallback_count": extractor_metadata.get(
-                "clip_extractor_fallback_count"
-            ),
-        },
+        }
+
+    return digest
+
+
+def _normalize_task_tier(task_tier: TaskTier) -> Literal["image_audit", "clip_audit", "weight_audit"]:
+    mapped = {
+        "easy": "image_audit",
+        "medium": "clip_audit",
+        "hard": "weight_audit",
     }
+    return mapped.get(task_tier, task_tier)  # type: ignore[return-value]
 
 
-def _build_prompt(signal_digest: dict[str, Any]) -> str:
+def _build_prompt(
+    signal_digest: dict[str, Any],
+    *,
+    task_tier: TaskTier = "weight_audit",
+) -> str:
+    signal_digest_json = json.dumps(signal_digest, indent=2, sort_keys=True)
+    tier = _normalize_task_tier(task_tier)
+    has_image = isinstance(signal_digest.get("image_summary"), dict)
+    has_clips = isinstance(signal_digest.get("clip_summary"), dict)
+    has_weight = isinstance(signal_digest.get("weight_summary"), dict)
+
+    if tier == "image_audit":
+        artifact_status = (
+            "Image signals available." if has_image else "Image not uploaded - no data."
+        )
+        heading_block = (
+            "### Overall Readiness\n"
+            "### Critical Risks\n"
+            "### Parameter Fixes\n"
+            "### Clip and Weight Status\n"
+            f"{artifact_status}\n"
+            "Clip and LoRA weight artifacts are out of scope for image_audit mode.\n"
+            "### Top 3 Next Actions\n"
+            "### Confidence\n\n"
+        )
+        tier_rules = (
+            "- In Critical Risks, use image_summary fields only when image_summary is present.\n"
+            "- If image_summary is absent, explicitly state 'not uploaded - no data'.\n"
+            "- In Parameter Fixes, use param_config anomalies only.\n"
+        )
+    elif tier == "clip_audit":
+        clip_scope = (
+            "clip_summary is available for analysis."
+            if has_clips
+            else "clip_summary is absent - clips not uploaded."
+        )
+        heading_block = (
+            "### Overall Readiness\n"
+            "### Critical Risks\n"
+            "### Parameter Fixes\n"
+            "### Data and Weight Concerns\n"
+            "### Weight Status\n"
+            f"{clip_scope} LoRA weights are out of scope for clip_audit mode.\n"
+            "### Top 3 Next Actions\n"
+            "### Confidence\n\n"
+        )
+        tier_rules = (
+            "- In Data and Weight Concerns, analyze clip_summary only when present.\n"
+            "- If clip_summary is present, use mean_identity_drift, mean_blur_score, and mean_lip_sync_confidence.\n"
+            "- For each clip in high_risk_clip_ids, identify which threshold triggered the flag: "
+            "drift >= 0.35, blur <= 0.30, or lip_sync <= 0.35.\n"
+            "- If ingestion_metadata.clip_extractor_fallback_count > 0, mark lip_sync_confidence as unreliable.\n"
+            "- Omit all weight_summary interpretation for this tier.\n"
+        )
+    else:
+        weight_scope = (
+            "weight_summary is available."
+            if has_weight
+            else "weight_summary is absent - weights not uploaded."
+        )
+        heading_block = (
+            "### Overall Readiness\n"
+            "### Critical Risks\n"
+            "### Parameter Fixes\n"
+            "### Data and Weight Concerns\n"
+            f"### Weight Status\n{weight_scope}\n"
+            "### Top 3 Next Actions\n"
+            "### Confidence\n\n"
+        )
+        tier_rules = (
+            "- Include weight_summary interpretation only when weight_summary is present.\n"
+            "- If weight_summary is absent, state 'not uploaded - no data' and skip weight interpretation.\n"
+            "- If image_summary or clip_summary are absent, skip those sections similarly.\n"
+            "- Mark any field produced by the fallback extractor as unreliable and exclude it from risk assessment.\n"
+        )
+
     return (
-        "Analyze this TalkingHeadBench ingestion bundle and provide a concise report with "
-        "exact headings: Overall Readiness, Critical Risks, Parameter Fixes, "
-        "Data and Weight Concerns, Top 3 Next Actions, Confidence. "
-        "Each risk and recommendation must reference explicit evidence from the digest. "
-        "Avoid absolute prescriptions; use directional fixes.\n\n"
-        f"Signal digest (JSON):\n{json.dumps(signal_digest, indent=2, sort_keys=True)}"
+        "Analyze this TalkingHeadBench ingestion bundle and produce a concise report\n"
+        "using exactly these headings:\n\n"
+        f"{heading_block}"
+        "Rules:\n"
+        "- Parameter fixes must be directional only - do NOT include any numeric values.\n"
+        f"{tier_rules}"
+        "- Keep the full report under 400 words.\n\n"
+        f"Signal digest:\n{signal_digest_json}"
     )
 
 

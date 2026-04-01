@@ -7,12 +7,13 @@ import sys
 from typing import Any, Literal
 from pathlib import Path
 
-from fastapi import File, Form, HTTPException, Request, UploadFile
+from fastapi import HTTPException, Request, UploadFile
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import HTMLResponse
 from openenv.core.env_server.http_server import create_app
 from openenv.core.env_server.types import Action
 from pydantic import BaseModel, Field
+from starlette.datastructures import UploadFile as StarletteUploadFile
 
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
@@ -28,6 +29,10 @@ from server.artifact_ingest import (
 )
 from server.llm_adapter import LLMAdapterError, analyze_ingested_bundle
 from server.talking_head_environment import TalkingHeadEnvironment
+from server.custom_ui import build_custom_ui
+import os
+
+os.environ["ENABLE_WEB_INTERFACE"] = "true"
 
 log = logging.getLogger(__name__)
 
@@ -74,6 +79,14 @@ class AnalyzeIngestionRequest(BaseModel):
     model_id: str | None = None
     api_key: str | None = None
     provider: Literal["auto", "openai", "anthropic", "huggingface", "local"] = "auto"
+    task_tier: Literal[
+        "image_audit",
+        "clip_audit",
+        "weight_audit",
+        "easy",
+        "medium",
+        "hard",
+    ] = "weight_audit"
     base_url: str | None = None
     max_tokens: int = Field(default=700, ge=64, le=4096)
     temperature: float = Field(default=0.2, ge=0.0, le=1.0)
@@ -108,11 +121,28 @@ def _raise_http_error(
         ),
     )
 
+# Monkeypatch to bypass OpenEnv's default "Playground" tab and enforce our custom theme
+import gradio as gr
+from server.custom_ui import build_custom_ui, custom_theme, custom_css
+
+original_tabbed = gr.TabbedInterface
+def skip_tabbed(interface_list, *args, **kwargs):
+    if len(interface_list) == 2:
+        return interface_list[1] # Only return standard custom_blocks
+    return original_tabbed(interface_list, *args, **kwargs)
+gr.TabbedInterface = skip_tabbed
+
+original_mount = gr.mount_gradio_app
+def override_mount_theme(fastapi_app, blocks, path, theme=None, css=None, **kwargs):
+    return original_mount(fastapi_app, blocks, path, theme=custom_theme, css=custom_css, **kwargs)
+gr.mount_gradio_app = override_mount_theme
+
 app = create_app(
     TalkingHeadEnvironment,
     Action,
     TalkingHeadObservation,
     env_name="talking_head_bench",
+    gradio_builder=build_custom_ui,
 )
 
 # ---------------------------------------------------------------------------
@@ -153,7 +183,7 @@ def _patch_ingest_artifacts_props(props: dict[str, Any]) -> None:
 
 
 def _patch_analyze_ingestion_props(props: dict[str, Any]) -> None:
-    allowed_keys = {"ingestion_id", "model_id", "api_key", "provider"}
+    allowed_keys = {"ingestion_id", "model_id", "api_key", "provider", "task_tier"}
     for key in list(props.keys()):
         if key not in allowed_keys:
             props.pop(key, None)
@@ -169,7 +199,7 @@ def _patch_analyze_ingestion_schema(schema_obj: dict[str, Any]) -> None:
         schema_obj["required"] = [
             field_name
             for field_name in required
-            if field_name in {"ingestion_id", "model_id", "api_key", "provider"}
+            if field_name in {"ingestion_id", "model_id", "api_key", "provider", "task_tier"}
         ]
 
 def _patched_openapi() -> dict:
@@ -379,7 +409,8 @@ async def ingest_artifacts(request: Request) -> IngestArtifactsResponse:
         Adding ``and value.filename`` would incorrectly discard uploads whose
         Content-Disposition says ``filename=""`` (falsy but still valid).
         """
-        return value if isinstance(value, UploadFile) else None
+        # request.form() returns Starlette UploadFile objects.
+        return value if isinstance(value, StarletteUploadFile) else None
 
     reference_image: UploadFile | None = _as_upload(form.get("reference_image"))
     lora_weights: UploadFile | None = _as_upload(form.get("lora_weights"))
@@ -388,7 +419,7 @@ async def ingest_artifacts(request: Request) -> IngestArtifactsResponse:
     # clips may arrive as a single value or repeated field; filter out any
     # plain-string placeholders Swagger/Scalar sends for unfilled array items.
     raw_clips = form.getlist("clips")
-    clips: list[UploadFile] = [f for f in raw_clips if isinstance(f, UploadFile)]
+    clips: list[UploadFile] = [f for f in raw_clips if isinstance(f, StarletteUploadFile)]
 
     prompt: str = str(form.get("prompt") or "")
     param_config_json: str = str(form.get("param_config_json") or "")
@@ -487,6 +518,7 @@ async def analyze_ingestion(request: AnalyzeIngestionRequest) -> AnalyzeIngestio
             model_id=request.model_id,
             api_key=request.api_key,
             provider=request.provider,
+            task_tier=request.task_tier,
             base_url=request.base_url,
             max_tokens=request.max_tokens,
             temperature=request.temperature,

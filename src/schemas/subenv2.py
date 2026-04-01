@@ -7,7 +7,7 @@ Covers all three nodes in the sub-environment:
   - Node 6 (Grader): Dataset Health Grader   → DatasetHealthHandoff
 
 All field names, types, and Literal values match the spec in
-``references/envs.md`` exactly.  No fields have been added or removed.
+``references/envs.md`` exactly.
 
 Important: ``ClipDispositionAction.override_decision`` is a 3-way
 ``Literal["not_applicable", "declined", "applied"]`` — NOT a bool.
@@ -88,8 +88,8 @@ class ClipEvidenceDossier(BaseModel):
 class ClipDispositionObservation(BaseModel):
     """Inputs to the Clip Disposition Recommender agent (Node 5).
 
-    Combines the per-clip evidence dossier from Node 4 with dataset-level
-    context and the risk profile forwarded from Sub-env 1.
+    Standalone clip-audit inputs combining per-clip evidence from Node 4 with
+    Sub-env 2 dataset-level context.
     """
 
     evidence_dossier: ClipEvidenceDossier
@@ -99,10 +99,6 @@ class ClipDispositionObservation(BaseModel):
     phoneme_gap_severity: dict              # phonemes below threshold
     pose_gap_severity: dict                 # regimes underrepresented
     budget_remaining: int                   # clips user still needs
-
-    # Risk context from Sub-env 1
-    reference_risk_profile: str
-    estimated_drift_risk: float
 
     # Non-local consequence signals
     marginal_training_damage: float         # estimated damage of accepting this clip

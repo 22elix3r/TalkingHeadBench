@@ -391,8 +391,6 @@ class TestSubenv2Instantiation:
             phoneme_gap_severity={"OW": 0.8, "UH": 0.6},
             pose_gap_severity={"non_frontal": 0.7},
             budget_remaining=33,
-            reference_risk_profile="medium",
-            estimated_drift_risk=0.32,
             marginal_training_damage=0.05,
             marginal_coverage_gain=0.15,
         )
@@ -480,8 +478,6 @@ class TestSubenv2ValidationErrors:
                 phoneme_gap_severity={},
                 pose_gap_severity={},
                 budget_remaining=33,
-                reference_risk_profile="low",
-                estimated_drift_risk=0.1,
                 marginal_training_damage=0.02,
                 marginal_coverage_gain=0.08,
             )

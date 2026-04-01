@@ -44,8 +44,6 @@ def make_obs(dossier: ClipEvidenceDossier, **ctx_overrides) -> ClipDispositionOb
         phoneme_gap_severity={"ZH": 2, "TH": 1},
         pose_gap_severity={},
         budget_remaining=10,
-        reference_risk_profile="medium",
-        estimated_drift_risk=0.4,
         marginal_training_damage=0.2,
         marginal_coverage_gain=0.5,
     )

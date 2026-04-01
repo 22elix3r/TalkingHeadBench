@@ -15,9 +15,6 @@ Final score formula
 
 Sub-environment coupling
 ------------------------
-- ``ReferenceAuditHandoff`` (Node 3 output) feeds ``risk_profile`` and
-  ``estimated_drift_risk`` into every clip's ``ClipDispositionObservation``
-  as ``reference_risk_profile`` and ``estimated_drift_risk``.
 - ``DatasetHealthHandoff`` (Node 6 output) feeds its
   ``synthetic_weight_descriptor`` into ``weight_obs.dataset_health_summary``
   and its ``suspected_anomalous_phonemes`` into
@@ -390,7 +387,6 @@ def _heuristic_clip_evidence_dossier(obs: ClipSignalObservation) -> ClipEvidence
 def _build_clip_disposition_obs(
     dossier: ClipEvidenceDossier,
     clip_context: dict,
-    reference_handoff: ReferenceAuditHandoff,
 ) -> ClipDispositionObservation:
     """Build a ClipDispositionObservation by combining Node 4 output with context."""
     return ClipDispositionObservation(
@@ -399,10 +395,6 @@ def _build_clip_disposition_obs(
         phoneme_gap_severity=clip_context.get("phoneme_gap_severity", {}),
         pose_gap_severity=clip_context.get("pose_gap_severity", {}),
         budget_remaining=int(clip_context.get("budget_remaining", 0)),
-        # ── Sub-env 1 coupling ──────────────────────────────────────────
-        reference_risk_profile=reference_handoff.risk_profile,
-        estimated_drift_risk=reference_handoff.estimated_drift_risk,
-        # ────────────────────────────────────────────────────────────────
         marginal_training_damage=float(clip_context.get("marginal_training_damage", 0.0)),
         marginal_coverage_gain=float(clip_context.get("marginal_coverage_gain", 0.0)),
     )
@@ -411,7 +403,6 @@ def _build_clip_disposition_obs(
 def _build_clip_disposition_obs_from_signal(
     dossier: ClipEvidenceDossier,
     clip_obs: ClipSignalObservation,
-    reference_handoff: ReferenceAuditHandoff,
 ) -> ClipDispositionObservation:
     """Build ``ClipDispositionObservation`` directly from a ``ClipSignalObservation``.
 
@@ -430,10 +421,6 @@ def _build_clip_disposition_obs_from_signal(
         phoneme_gap_severity={},
         pose_gap_severity={},
         budget_remaining=max(0, 50 - clip_obs.clips_audited_so_far),
-        # ── Sub-env 1 coupling ──────────────────────────────────────────
-        reference_risk_profile=reference_handoff.risk_profile,
-        estimated_drift_risk=reference_handoff.estimated_drift_risk,
-        # ────────────────────────────────────────────────────────────────
         marginal_training_damage=marginal_training_damage,
         marginal_coverage_gain=marginal_coverage_gain,
     )
@@ -697,10 +684,8 @@ def run_episode(
     are called directly via their public functions; graders (3, 6, 9) are
     applied immediately after each sub-environment.
 
-    Sub-environment coupling:
-      - ``ReferenceAuditHandoff.risk_profile`` and ``estimated_drift_risk``
-        are injected into every ``ClipDispositionObservation``.
-      - ``DatasetHealthHandoff.synthetic_weight_descriptor`` is injected into
+        Sub-environment coupling:
+            - ``DatasetHealthHandoff.synthetic_weight_descriptor`` is injected into
         ``weight_obs.dataset_health_summary`` before Node 7 runs.
       - ``DatasetHealthHandoff.suspected_anomalous_phonemes`` is forwarded
         into ``PhonemeRiskObservation`` for Node 8.
@@ -794,7 +779,7 @@ def run_episode(
 
         # Node 5 — Clip Disposition Recommender (agent)
         disposition_obs = _build_clip_disposition_obs_from_signal(
-            dossier, clip_obs, reference_handoff
+            dossier, clip_obs
         )
         disposition_action: ClipDispositionAction = _call_node(
             f"Node 5 ({clip_label})", recommend_clip_disposition, disposition_obs
@@ -1076,11 +1061,7 @@ def run_episode_from_bundle(artifact_bundle: dict) -> EpisodeResult:
     exception propagates — nothing is silently swallowed.
 
     The sub-environment coupling is:
-      - ``ReferenceAuditHandoff.risk_profile``        → each clip's
-        ``ClipDispositionObservation.reference_risk_profile``
-      - ``ReferenceAuditHandoff.estimated_drift_risk`` → each clip's
-        ``ClipDispositionObservation.estimated_drift_risk``
-      - ``DatasetHealthHandoff.synthetic_weight_descriptor`` → Node 7
+            - ``DatasetHealthHandoff.synthetic_weight_descriptor`` → Node 7
         ``extract_weight_signals(dataset_health_summary=...)``
       - ``DatasetHealthHandoff.suspected_anomalous_phonemes`` → Node 8
         ``PhonemeRiskObservation.suspected_anomalous_phonemes_from_subenv2``
@@ -1273,7 +1254,7 @@ def run_episode_from_bundle(artifact_bundle: dict) -> EpisodeResult:
 
         # Node 5 — Clip Disposition Recommender (agent)
         disposition_obs = _build_clip_disposition_obs(
-            dossier, clip_spec["dataset_context"], reference_handoff
+            dossier, clip_spec["dataset_context"]
         )
         disposition_action = _call_node(
             f"Node 5 ({clip_label})", agents["node5"], disposition_obs
